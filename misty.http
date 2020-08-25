@@ -3,10 +3,11 @@ GET https://localhost:5001/articles HTTP/1.1
 GET https://localhost:5001/articles/1 HTTP/1.1
 ###
 POST https://localhost:5001/articles HTTP/1.1
+
 content-type: application/json
-
 {
-
+    "Title":"tit",
+    "Description":"foo"
 }
 ###
 DELETE https://localhost:5001/articles/1 HTTP/1.1
