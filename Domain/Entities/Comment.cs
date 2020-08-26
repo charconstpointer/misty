@@ -10,9 +10,10 @@ namespace Misty.Domain.Entities
 
         public Comment(string content)
         {
+            var snapshot = DateTime.UtcNow;
             Content = content;
-            CreatedAt = DateTime.UtcNow;
-            LastChangedAt = DateTime.UtcNow;
+            CreatedAt = snapshot;
+            LastChangedAt = snapshot;
         }
 
         public void Edit(string content)

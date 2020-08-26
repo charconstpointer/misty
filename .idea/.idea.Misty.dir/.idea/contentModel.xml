@@ -19,6 +19,7 @@
         <e p="CreateNewComment.cs" t="Include" />
         <e p="DeleteArticle.cs" t="Include" />
         <e p="Handlers" t="Include">
+          <e p="CreateCommentHandler.cs" t="Include" />
           <e p="CreateNewArticleHandler.cs" t="Include" />
           <e p="DeleteArticleHandler.cs" t="Include" />
         </e>

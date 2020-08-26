@@ -34,11 +34,14 @@ namespace Misty.Controllers
         public async Task<IActionResult> DeleteArticle(int id)
             => Ok(await _mediator.Send(new DeleteArticle {ArticleId = id}));
 
-        [HttpPost("{id:int}/comments")]
+        [HttpPost("{articleId:int}/comments")]
         public async Task<IActionResult> CreateComment(int articleId, CreateComment command)
-            => Created("", await _mediator.Send(command));
-        
-        [HttpGet("{id:int}/comments")]
+        {
+            command.ArticleId = articleId;
+            return Created("", await _mediator.Send(command));
+        }
+
+        [HttpGet("{articleId:int}/comments")]
         public async Task<IActionResult> GetComments(int articleId)
             => Ok(await _mediator.Send(new GetArticleComments{ArticleId = articleId}));
     }
