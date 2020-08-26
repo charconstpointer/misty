@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Misty.Domain.Entites;
+using Misty.Domain.Entities;
 
 namespace Misty.Queries.Handlers
 {

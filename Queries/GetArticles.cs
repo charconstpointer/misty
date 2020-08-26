@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using MediatR;
-using Misty.Domain.Entites;
+using Misty.Domain.Entities;
 
 namespace Misty.Queries
 {

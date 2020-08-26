@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Misty.Domain.Entites;
+using Misty.Domain.Entities;
 
 namespace Misty.Commands.Handlers
 {

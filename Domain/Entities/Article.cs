@@ -1,16 +1,17 @@
 using System;
 
-namespace Misty.Domain.Entites
+namespace Misty.Domain.Entities
 {
     public class Article
     {
-        public Guid Id { get; }
-        public string Title { get; private set; }
-        public string Description { get; private set; }
+        public int Id { get; }
+        public string Title { get; }
+        public string Description { get; }
 
         private Article(string description, string title)
         {
-            Id = Guid.NewGuid();
+            var random = new Random();
+            Id = random.Next(int.MaxValue);
             Description = description;
             Title = title;
         }

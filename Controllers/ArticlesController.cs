@@ -25,9 +25,9 @@ namespace Misty.Controllers
             => Ok(await _mediator.Send(new GetArticles()));
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetArticle(int id)
-            => Ok();
+            => Ok(await _mediator.Send(new GetArticle{ArticleId= id}));
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteArticle(int id)
-            => Ok();
+            => Ok(await _mediator.Send(new DeleteArticle{ArticleId = id}));
     }
 }
