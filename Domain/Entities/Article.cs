@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
 
 namespace Misty.Domain.Entities
 {
@@ -7,6 +9,8 @@ namespace Misty.Domain.Entities
         public int Id { get; }
         public string Title { get; }
         public string Description { get; }
+        private readonly ISet<Comment> _comments;
+        public IReadOnlyCollection<Comment> Comments => _comments.ToImmutableList();
 
         private Article(string description, string title)
         {
@@ -14,8 +18,18 @@ namespace Misty.Domain.Entities
             Id = random.Next(int.MaxValue);
             Description = description;
             Title = title;
+            _comments = new HashSet<Comment>();
         }
 
+        public void AddComment(Comment comment)
+        {
+            if (comment == null)
+            {
+                throw new ApplicationException("Comment cannot be null");
+            }
+
+            _comments.Add(comment);
+        }
         public static Article Create(string title, string description)
         {
             if (string.IsNullOrEmpty(title))

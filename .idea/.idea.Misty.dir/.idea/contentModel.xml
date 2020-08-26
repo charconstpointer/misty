@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\mo\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\mo\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_.19.00" t="ExcludeRecursive" />
+    <e p="C:\Users\mo\AppData\Roaming\JetBrains\Rider2020.2\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\mo\AppData\Roaming\JetBrains\Rider2020.2\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\mo\RiderProjects\misty" t="IncludeRecursive">
+      <e p=".gitignore" t="Include" />
+      <e p="appsettings.Development.json" t="Include" />
+      <e p="appsettings.json" t="Include" />
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="Commands" t="Include">
+        <e p="Comments" t="Include">
+          <e p="CreateComment.cs" t="Include" />
+        </e>
+        <e p="CreateNewAd.cs" t="Include" />
+        <e p="CreateNewArticle.cs" t="Include" />
+        <e p="CreateNewComment.cs" t="Include" />
+        <e p="DeleteArticle.cs" t="Include" />
+        <e p="Handlers" t="Include">
+          <e p="CreateNewArticleHandler.cs" t="Include" />
+          <e p="DeleteArticleHandler.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Controllers" t="Include">
+        <e p="ArticlesController.cs" t="Include" />
+      </e>
+      <e p="Domain" t="Include">
+        <e p="Entities" t="Include">
+          <e p="Ad.cs" t="Include" />
+          <e p="Article.cs" t="Include" />
+          <e p="Category.cs" t="Include" />
+          <e p="Comment.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Misty.csproj" t="IncludeRecursive" />
+      <e p="misty.http" t="Include" />
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="netcoreapp3.1" t="Include">
+            <e p="Misty.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Program.cs" t="Include" />
+      <e p="Properties" t="Include">
+        <e p="launchSettings.json" t="Include" />
+      </e>
+      <e p="Queries" t="Include">
+        <e p="GetArticle.cs" t="Include" />
+        <e p="GetArticleComments.cs" t="Include" />
+        <e p="GetArticles.cs" t="Include" />
+        <e p="Handlers" t="Include">
+          <e p="GetArticleCommentsHandler.cs" t="Include" />
+          <e p="GetArticleHandler.cs" t="Include" />
+          <e p="GetArticlesHandlers.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Startup.cs" t="Include" />
+    </e>
+  </component>
+</project>
