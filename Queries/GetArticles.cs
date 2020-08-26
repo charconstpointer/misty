@@ -6,6 +6,5 @@ namespace Misty.Queries
 {
     public class GetArticles : IRequest<IEnumerable<Article>>
     {
-
     }
 }

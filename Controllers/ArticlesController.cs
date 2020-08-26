@@ -20,19 +20,27 @@ namespace Misty.Controllers
 
         [HttpPost]
         public async Task<IActionResult> CreateArticle(CreateNewArticle command)
-            => Created("", await _mediator.Send(command));
+        {
+            return Created("", await _mediator.Send(command));
+        }
 
         [HttpGet]
         public async Task<IActionResult> GetArticles()
-            => Ok(await _mediator.Send(new GetArticles()));
+        {
+            return Ok(await _mediator.Send(new GetArticles()));
+        }
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetArticle(int id)
-            => Ok(await _mediator.Send(new GetArticle {ArticleId = id}));
+        {
+            return Ok(await _mediator.Send(new GetArticle {ArticleId = id}));
+        }
 
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteArticle(int id)
-            => Ok(await _mediator.Send(new DeleteArticle {ArticleId = id}));
+        {
+            return Ok(await _mediator.Send(new DeleteArticle {ArticleId = id}));
+        }
 
         [HttpPost("{articleId:int}/comments")]
         public async Task<IActionResult> CreateComment(int articleId, CreateComment command)
@@ -43,6 +51,8 @@ namespace Misty.Controllers
 
         [HttpGet("{articleId:int}/comments")]
         public async Task<IActionResult> GetComments(int articleId)
-            => Ok(await _mediator.Send(new GetArticleComments{ArticleId = articleId}));
+        {
+            return Ok(await _mediator.Send(new GetArticleComments {ArticleId = articleId}));
+        }
     }
 }

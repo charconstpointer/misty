@@ -22,9 +22,7 @@ namespace Misty.Commands.Handlers
         {
             var article = _articles.SingleOrDefault(a => a.Id == request.ArticleId);
             if (article == null)
-            {
                 throw new ApplicationException($"Article with id : {request.ArticleId} could not be found");
-            }
 
             var comment = new Comment(request.Content);
             article.AddComment(comment);

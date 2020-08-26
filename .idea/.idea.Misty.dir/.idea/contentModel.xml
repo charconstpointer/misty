@@ -6,6 +6,7 @@
     <e p="C:\Users\mo\AppData\Roaming\JetBrains\Rider2020.2\consoles\db" t="IncludeRecursive" />
     <e p="C:\Users\mo\AppData\Roaming\JetBrains\Rider2020.2\extensions" t="IncludeRecursive" />
     <e p="C:\Users\mo\RiderProjects\misty" t="IncludeRecursive">
+      <e p=".dockerignore" t="Include" />
       <e p=".gitignore" t="Include" />
       <e p="appsettings.Development.json" t="Include" />
       <e p="appsettings.json" t="Include" />
@@ -16,7 +17,6 @@
         </e>
         <e p="CreateNewAd.cs" t="Include" />
         <e p="CreateNewArticle.cs" t="Include" />
-        <e p="CreateNewComment.cs" t="Include" />
         <e p="DeleteArticle.cs" t="Include" />
         <e p="Handlers" t="Include">
           <e p="CreateCommentHandler.cs" t="Include" />
@@ -27,6 +27,7 @@
       <e p="Controllers" t="Include">
         <e p="ArticlesController.cs" t="Include" />
       </e>
+      <e p="Dockerfile" t="Include" />
       <e p="Domain" t="Include">
         <e p="Entities" t="Include">
           <e p="Ad.cs" t="Include" />
