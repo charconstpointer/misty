@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Misty.Commands
+namespace Misty.Commands.Articles
 {
     public class CreateNewArticle : IRequest
     {

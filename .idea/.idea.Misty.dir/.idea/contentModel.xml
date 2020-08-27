@@ -11,7 +11,12 @@
       <e p="bin" t="ExcludeRecursive" />
       <e p="Commands" t="Include">
         <e p="Ads" t="Include">
+          <e p="CreateNewAd.cs" t="Include" />
           <e p="UpdateAd.cs" t="Include" />
+        </e>
+        <e p="Articles" t="Include">
+          <e p="CreateNewArticle.cs" t="Include" />
+          <e p="DeleteArticle.cs" t="Include" />
         </e>
         <e p="Categories" t="Include">
           <e p="CreateNewCategory.cs" t="Include" />
@@ -19,9 +24,6 @@
         <e p="Comments" t="Include">
           <e p="CreateComment.cs" t="Include" />
         </e>
-        <e p="CreateNewAd.cs" t="Include" />
-        <e p="CreateNewArticle.cs" t="Include" />
-        <e p="DeleteArticle.cs" t="Include" />
         <e p="Handlers" t="Include">
           <e p="CreateCommentHandler.cs" t="Include" />
           <e p="CreateNewArticleHandler.cs" t="Include" />

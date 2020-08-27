@@ -22,7 +22,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cadd8957-b010-43ca-b166-351b209704c0" name="Default Changelist" comment="more endpoints" />
+    <list default="true" id="cadd8957-b010-43ca-b166-351b209704c0" name="Default Changelist" comment="workspace.xml">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Misty.dir/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Misty.dir/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Misty.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Misty.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/CreateNewAd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Ads/CreateNewAd.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/CreateNewArticle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Articles/CreateNewArticle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/DeleteArticle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Articles/DeleteArticle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/Handlers/CreateNewArticleHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Handlers/CreateNewArticleHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/Handlers/DeleteArticleHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Handlers/DeleteArticleHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/ArticlesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/ArticlesController.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,9 +50,7 @@
         <option value="$PROJECT_DIR$/appsettings.json" />
         <option value="$PROJECT_DIR$/Commands/Handlers/LoginUserHandler.cs" />
         <option value="$PROJECT_DIR$/Controllers/UsersController.cs" />
-        <option value="$PROJECT_DIR$/Controllers/ArticlesController.cs" />
         <option value="$PROJECT_DIR$/Domain/Entities/Visitor.cs" />
-        <option value="$PROJECT_DIR$/Domain/Entities/User.cs" />
         <option value="$PROJECT_DIR$/Domain/Enums/class.cs" />
         <option value="$PROJECT_DIR$/Domain/Enums/UserType.cs" />
         <option value="$PROJECT_DIR$/Domain/Entities/Article.cs" />
@@ -54,6 +61,11 @@
         <option value="$PROJECT_DIR$/Commands/Ads/UpdateAd.cs" />
         <option value="$PROJECT_DIR$/Commands/Handlers/UpdateAdHandler.cs" />
         <option value="$PROJECT_DIR$/Controllers/AdsController.cs" />
+        <option value="$PROJECT_DIR$/Domain/Entities/User.cs" />
+        <option value="$PROJECT_DIR$/Commands/Ads/CreateNewAd.cs" />
+        <option value="$PROJECT_DIR$/Commands/Articles/CreateNewArticle.cs" />
+        <option value="$PROJECT_DIR$/Commands/Articles/DeleteArticle.cs" />
+        <option value="$PROJECT_DIR$/Controllers/ArticlesController.cs" />
       </list>
     </option>
   </component>
@@ -111,7 +123,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1598516237538</updated>
-      <workItem from="1598516238983" duration="5848000" />
+      <workItem from="1598516238983" duration="5923000" />
     </task>
     <task id="LOCAL-00001" summary="users commands">
       <created>1598517770179</created>
@@ -141,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598527358028</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="workspace.xml">
+      <created>1598528428196</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1598528428196</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
@@ -163,7 +182,8 @@
     <MESSAGE value="jwt" />
     <MESSAGE value="authorize endpoints" />
     <MESSAGE value="more endpoints" />
-    <option name="LAST_COMMIT_MESSAGE" value="more endpoints" />
+    <MESSAGE value="workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="workspace.xml" />
   </component>
   <component name="WindowStateProjectService">
     <state width="1750" height="275" key="GridCell.Tab.0.bottom" timestamp="1598527361564">

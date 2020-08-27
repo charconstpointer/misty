@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Misty.Commands
+namespace Misty.Commands.Ads
 {
     public class CreateNewAd : IRequest
     {

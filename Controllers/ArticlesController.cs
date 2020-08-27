@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Misty.Commands;
+using Misty.Commands.Articles;
 using Misty.Commands.Comments;
 using Misty.Queries;
 
