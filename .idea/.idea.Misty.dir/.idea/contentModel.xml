@@ -57,6 +57,13 @@
         <e p="Enums" t="Include">
           <e p="UserType.cs" t="Include" />
         </e>
+        <e p="Repositories" t="Include">
+          <e p="IAdsRepository.cs" t="Include" />
+          <e p="IArticlesRepository.cs" t="Include" />
+          <e p="ICategoriesRepository.cs" t="Include" />
+          <e p="IRepository.cs" t="Include" />
+          <e p="IUsersRepository.cs" t="Include" />
+        </e>
       </e>
       <e p="Misty.csproj" t="IncludeRecursive" />
       <e p="misty.http" t="Include" />
