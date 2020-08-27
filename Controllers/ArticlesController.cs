@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Misty.Commands;
 using Misty.Commands.Comments;
@@ -19,6 +20,7 @@ namespace Misty.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> CreateArticle(CreateNewArticle command)
         {
             return Created("", await _mediator.Send(command));
@@ -37,12 +39,14 @@ namespace Misty.Controllers
         }
 
         [HttpDelete("{id:int}")]
+        [Authorize]
         public async Task<IActionResult> DeleteArticle(int id)
         {
             return Ok(await _mediator.Send(new DeleteArticle {ArticleId = id}));
         }
 
         [HttpPost("{articleId:int}/comments")]
+        [Authorize]
         public async Task<IActionResult> CreateComment(int articleId, CreateComment command)
         {
             command.ArticleId = articleId;

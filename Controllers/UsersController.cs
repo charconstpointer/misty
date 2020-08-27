@@ -16,11 +16,11 @@ namespace Misty.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost]
+        [HttpPost("register")]
         public async Task<IActionResult> Register(CreateNewUser command)
             => Created("", await _mediator.Send(command));
 
-        [HttpPost]
+        [HttpPost("login")]
         public async Task<IActionResult> Login(LoginUser command)
             => Ok(await _mediator.Send(command));
     }
