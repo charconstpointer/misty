@@ -4,23 +4,24 @@ using System.Threading.Tasks;
 using MediatR;
 using Misty.Commands.Articles;
 using Misty.Domain.Entities;
+using Misty.Domain.Repositories;
 
 namespace Misty.Commands.Handlers
 {
     public class CreateNewArticleHandler : IRequestHandler<CreateNewArticle>
     {
-        private readonly ICollection<Article> _articles;
+        private readonly IArticlesRepository _articlesRepository;
 
-        public CreateNewArticleHandler(ICollection<Article> articles)
+        public CreateNewArticleHandler(IArticlesRepository articlesRepository)
         {
-            _articles = articles;
+            _articlesRepository = articlesRepository;
         }
 
-        public Task<Unit> Handle(CreateNewArticle request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateNewArticle request, CancellationToken cancellationToken)
         {
             var article = Article.Create(request.Title, request.Description);
-            _articles.Add(article);
-            return Unit.Task;
+            await _articlesRepository.Save(article);
+            return Unit.Value;
         }
     }
 }

@@ -22,14 +22,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cadd8957-b010-43ca-b166-351b209704c0" name="Default Changelist" comment="folders, namespces fixes">
-      <change afterPath="$PROJECT_DIR$/Domain/Repositories/IAdsRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Repositories/IArticlesRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Repositories/ICategoriesRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Repositories/IRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Repositories/IUsersRepository.cs" afterDir="false" />
+    <list default="true" id="cadd8957-b010-43ca-b166-351b209704c0" name="Default Changelist" comment="repos">
+      <change afterPath="$PROJECT_DIR$/Persistence/Repositories/ArticlesRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Misty.dir/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Misty.dir/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Misty.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Misty.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/Handlers/CreateNewArticleHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Handlers/CreateNewArticleHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commands/Handlers/DeleteArticleHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Handlers/DeleteArticleHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Queries/Handlers/GetArticleCommentsHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Queries/Handlers/GetArticleCommentsHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Queries/Handlers/GetArticleHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Queries/Handlers/GetArticleHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Queries/Handlers/GetArticlesHandlers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Queries/Handlers/GetArticlesHandlers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Startup.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +47,6 @@
         <option value="$PROJECT_DIR$/Commands/Users/CreateNewUser.cs" />
         <option value="$PROJECT_DIR$/Commands/Handlers/CreateNewUserHandler.cs" />
         <option value="$PROJECT_DIR$/Commands/Users/LoginUser.cs" />
-        <option value="$PROJECT_DIR$/Startup.cs" />
         <option value="$PROJECT_DIR$/appsettings.json" />
         <option value="$PROJECT_DIR$/Commands/Handlers/LoginUserHandler.cs" />
         <option value="$PROJECT_DIR$/Controllers/UsersController.cs" />
@@ -70,6 +71,13 @@
         <option value="$PROJECT_DIR$/Domain/Repositories/IArticlesRepository.cs" />
         <option value="$PROJECT_DIR$/Domain/Repositories/ICategoriesRepository.cs" />
         <option value="$PROJECT_DIR$/Domain/Repositories/IUsersRepository.cs" />
+        <option value="$PROJECT_DIR$/Persistence/Repositories/ArticlesRepository.cs" />
+        <option value="$PROJECT_DIR$/Startup.cs" />
+        <option value="$PROJECT_DIR$/Commands/Handlers/CreateNewArticleHandler.cs" />
+        <option value="$PROJECT_DIR$/Commands/Handlers/DeleteArticleHandler.cs" />
+        <option value="$PROJECT_DIR$/Queries/Handlers/GetArticlesHandlers.cs" />
+        <option value="$PROJECT_DIR$/Queries/Handlers/GetArticleHandler.cs" />
+        <option value="$PROJECT_DIR$/Queries/Handlers/GetArticleCommentsHandler.cs" />
       </list>
     </option>
   </component>
@@ -128,7 +136,7 @@
       <option name="presentableId" value="Default" />
       <updated>1598516237538</updated>
       <workItem from="1598516238983" duration="6570000" />
-      <workItem from="1598540163541" duration="562000" />
+      <workItem from="1598540163541" duration="1136000" />
     </task>
     <task id="LOCAL-00001" summary="users commands">
       <created>1598517770179</created>
@@ -172,7 +180,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598528497918</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="repos">
+      <created>1598551167864</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1598551167864</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
@@ -197,7 +212,8 @@
     <MESSAGE value="more endpoints" />
     <MESSAGE value="workspace.xml" />
     <MESSAGE value="folders, namespces fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="folders, namespces fixes" />
+    <MESSAGE value="repos" />
+    <option name="LAST_COMMIT_MESSAGE" value="repos" />
   </component>
   <component name="WindowStateProjectService">
     <state width="1750" height="275" key="GridCell.Tab.0.bottom" timestamp="1598530531791">
@@ -216,13 +232,21 @@
       <screen x="0" y="23" width="1792" height="1014" />
     </state>
     <state width="1750" height="275" key="GridCell.Tab.0.right/0.23.1792.1014@0.23.1792.1014" timestamp="1598530531791" />
+    <state x="692" y="226" key="RiderGenerateDialog" timestamp="1598551194347">
+      <screen x="0" y="23" width="1792" height="1014" />
+    </state>
+    <state x="692" y="226" key="RiderGenerateDialog/0.23.1792.1014@0.23.1792.1014" timestamp="1598551194347" />
+    <state x="747" y="450" key="VCS.ChangelistChooser" timestamp="1598551433688">
+      <screen x="0" y="23" width="1792" height="1014" />
+    </state>
+    <state x="747" y="450" key="VCS.ChangelistChooser/0.23.1792.1014@0.23.1792.1014" timestamp="1598551433688" />
     <state x="496" y="269" key="Vcs.Push.Dialog.v2" timestamp="1598528499755">
       <screen x="0" y="23" width="1792" height="1014" />
     </state>
     <state x="496" y="269" key="Vcs.Push.Dialog.v2/0.23.1792.1014@0.23.1792.1014" timestamp="1598528499755" />
-    <state x="560" y="179" width="672" height="676" key="search.everywhere.popup" timestamp="1598527267714">
+    <state x="560" y="179" width="672" height="676" key="search.everywhere.popup" timestamp="1598551658564">
       <screen x="0" y="23" width="1792" height="1014" />
     </state>
-    <state x="560" y="179" width="672" height="676" key="search.everywhere.popup/0.23.1792.1014@0.23.1792.1014" timestamp="1598527267714" />
+    <state x="560" y="179" width="672" height="676" key="search.everywhere.popup/0.23.1792.1014@0.23.1792.1014" timestamp="1598551658564" />
   </component>
 </project>

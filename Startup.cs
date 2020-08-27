@@ -12,6 +12,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Misty.Domain.Entities;
+using Misty.Domain.Repositories;
+using Misty.Persistence.Repositories;
 
 namespace Misty
 {
@@ -68,6 +70,7 @@ namespace Misty
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "Shrie? Shrie.", Version = "v1"});
             });
+            services.AddTransient<IArticlesRepository, ArticlesRepository>();
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddSingleton<ICollection<Article>>(_ => new List<Article>());
         }

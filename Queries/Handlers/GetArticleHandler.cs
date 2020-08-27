@@ -1,25 +1,23 @@
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Misty.Domain.Entities;
+using Misty.Domain.Repositories;
 
 namespace Misty.Queries.Handlers
 {
     public class GetArticleHandler : IRequestHandler<GetArticle, Article>
     {
-        private readonly ICollection<Article> _articles;
+        private readonly IArticlesRepository _articlesRepository;
 
-        public GetArticleHandler(ICollection<Article> articles)
+        public GetArticleHandler(IArticlesRepository articlesRepository)
         {
-            _articles = articles;
+            _articlesRepository = articlesRepository;
         }
 
         public async Task<Article> Handle(GetArticle request, CancellationToken cancellationToken)
         {
-            var article = _articles.FirstOrDefault(a => a.Id == request.ArticleId);
-            return article;
+            return await _articlesRepository.Get(request.ArticleId);
         }
     }
 }

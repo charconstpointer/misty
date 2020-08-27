@@ -6,25 +6,22 @@ using System.Threading.Tasks;
 using MediatR;
 using Misty.Commands.Articles;
 using Misty.Domain.Entities;
+using Misty.Domain.Repositories;
 
 namespace Misty.Commands.Handlers
 {
     public class DeleteArticleHandler : IRequestHandler<DeleteArticle>
     {
-        private readonly ICollection<Article> _articles;
+        private readonly IArticlesRepository _articlesRepository;
 
-        public DeleteArticleHandler(ICollection<Article> articles)
+        public DeleteArticleHandler(IArticlesRepository articlesRepository)
         {
-            _articles = articles;
+            _articlesRepository = articlesRepository;
         }
 
         public async Task<Unit> Handle(DeleteArticle request, CancellationToken cancellationToken)
         {
-            var article = _articles.FirstOrDefault(a => a.Id == request.ArticleId);
-            if (article is null)
-                throw new ApplicationException($"Article with id {request.ArticleId} could not be found.");
-
-            _articles.Remove(article);
+            await _articlesRepository.Delete(request.ArticleId);
             return Unit.Value;
         }
     }
