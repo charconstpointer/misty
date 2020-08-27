@@ -10,6 +10,12 @@
       <e p="appsettings.json" t="Include" />
       <e p="bin" t="ExcludeRecursive" />
       <e p="Commands" t="Include">
+        <e p="Ads" t="Include">
+          <e p="UpdateAd.cs" t="Include" />
+        </e>
+        <e p="Categories" t="Include">
+          <e p="CreateNewCategory.cs" t="Include" />
+        </e>
         <e p="Comments" t="Include">
           <e p="CreateComment.cs" t="Include" />
         </e>
@@ -19,9 +25,11 @@
         <e p="Handlers" t="Include">
           <e p="CreateCommentHandler.cs" t="Include" />
           <e p="CreateNewArticleHandler.cs" t="Include" />
+          <e p="CreateNewCategoryHandler.cs" t="Include" />
           <e p="CreateNewUserHandler.cs" t="Include" />
           <e p="DeleteArticleHandler.cs" t="Include" />
           <e p="LoginUserHandler.cs" t="Include" />
+          <e p="UpdateAdHandler.cs" t="Include" />
         </e>
         <e p="Users" t="Include">
           <e p="CreateNewUser.cs" t="Include" />
@@ -29,7 +37,9 @@
         </e>
       </e>
       <e p="Controllers" t="Include">
+        <e p="AdsController.cs" t="Include" />
         <e p="ArticlesController.cs" t="Include" />
+        <e p="CategoriesController.cs" t="Include" />
         <e p="UsersController.cs" t="Include" />
       </e>
       <e p="Dockerfile" t="Include" />
@@ -39,6 +49,11 @@
           <e p="Article.cs" t="Include" />
           <e p="Category.cs" t="Include" />
           <e p="Comment.cs" t="Include" />
+          <e p="User.cs" t="Include" />
+          <e p="Visitor.cs" t="Include" />
+        </e>
+        <e p="Enums" t="Include">
+          <e p="UserType.cs" t="Include" />
         </e>
       </e>
       <e p="Misty.csproj" t="IncludeRecursive" />
