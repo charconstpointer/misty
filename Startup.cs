@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
@@ -72,7 +73,8 @@ namespace Misty
             });
             services.AddTransient<IArticlesRepository, ArticlesRepository>();
             services.AddMediatR(Assembly.GetExecutingAssembly());
-            services.AddSingleton<ICollection<Article>>(_ => new List<Article>());
+            services.AddSingleton<ICollection<User>>(_ => new HashSet<User>());
+            services.AddSingleton<ICollection<Article>>(_ => new HashSet<Article>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
