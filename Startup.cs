@@ -7,6 +7,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -14,6 +15,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Misty.Domain.Entities;
 using Misty.Domain.Repositories;
+using Misty.Persistence;
 using Misty.Persistence.Repositories;
 
 namespace Misty
@@ -35,13 +37,9 @@ namespace Misty
                 options.AddPolicy("AllowAll",
                     corsBuilder =>
                     {
-                        corsBuilder
+                           corsBuilder
                             .WithOrigins("localhost:3000")
                             .WithOrigins("http://localhost:3000")
-                            .WithOrigins("https://www.polskieradio.pl")
-                            .WithOrigins("http://www.polskieradio.pl")
-                            .WithOrigins("https://polskieradio.pl")
-                            .WithOrigins("http://polskieradio.pl")
                             .AllowAnyMethod()
                             .AllowAnyHeader()
                             .AllowCredentials();
@@ -49,6 +47,7 @@ namespace Misty
             });
 
             services.AddControllers();
+            services.AddDbContext<MistyContext>(p => p.UseSqlServer(Configuration.GetConnectionString("db")));
             services.AddAuthentication(x =>
                 {
                     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

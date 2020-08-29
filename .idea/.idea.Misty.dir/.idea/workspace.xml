@@ -23,11 +23,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cadd8957-b010-43ca-b166-351b209704c0" name="Default Changelist" comment="ArticlesRepository.cs">
-      <change afterPath="$PROJECT_DIR$/Persistence/Repositories/UsersRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controllers/RunnerController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Persistence/Configurations/ArticleEntityConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Persistence/MistyContext.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Misty.dir/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Misty.dir/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Misty.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Misty.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/Handlers/CreateNewUserHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Handlers/CreateNewUserHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Entities/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Entities/Comment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/Comment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Misty.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Misty.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Startup.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,9 +76,15 @@
         <option value="$PROJECT_DIR$/Queries/Handlers/GetArticleCommentsHandler.cs" />
         <option value="$PROJECT_DIR$/Domain/Entities/User.cs" />
         <option value="$PROJECT_DIR$/Persistence/Repositories/UsersRepository.cs" />
-        <option value="$PROJECT_DIR$/Startup.cs" />
         <option value="$PROJECT_DIR$/Commands/Handlers/LoginUserHandler.cs" />
         <option value="$PROJECT_DIR$/Commands/Handlers/CreateNewUserHandler.cs" />
+        <option value="$PROJECT_DIR$/Persistence/MistyContenxt.cs" />
+        <option value="$PROJECT_DIR$/Persistence/MistyContext.cs" />
+        <option value="$PROJECT_DIR$/Controllers/RunnerController.cs" />
+        <option value="$PROJECT_DIR$/Domain/Entities/Comment.cs" />
+        <option value="$PROJECT_DIR$/Persistence/Configurations/ArticleEntityConfiguration.cs" />
+        <option value="$PROJECT_DIR$/Startup.cs" />
+        <option value="$PROJECT_DIR$/docker-compose.yml" />
       </list>
     </option>
   </component>
@@ -92,6 +101,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Misty">
     <configuration name="Misty" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
@@ -135,6 +145,7 @@
       <updated>1598516237538</updated>
       <workItem from="1598516238983" duration="6570000" />
       <workItem from="1598540163541" duration="2004000" />
+      <workItem from="1598703420099" duration="1196000" />
     </task>
     <task id="LOCAL-00001" summary="users commands">
       <created>1598517770179</created>
@@ -195,6 +206,9 @@
     <option name="localTasksCounter" value="9" />
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
@@ -242,6 +256,10 @@
       <screen x="0" y="23" width="1792" height="1014" />
     </state>
     <state x="692" y="226" key="RiderGenerateDialog/0.23.1792.1014@0.23.1792.1014" timestamp="1598552375272" />
+    <state x="533" y="201" key="SettingsEditor" timestamp="1598704128442">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="533" y="201" key="SettingsEditor/0.0.2048.1112@0.0.2048.1112" timestamp="1598704128442" />
     <state x="747" y="450" key="VCS.ChangelistChooser" timestamp="1598551433688">
       <screen x="0" y="23" width="1792" height="1014" />
     </state>
@@ -250,9 +268,10 @@
       <screen x="0" y="23" width="1792" height="1014" />
     </state>
     <state x="496" y="269" key="Vcs.Push.Dialog.v2/0.23.1792.1014@0.23.1792.1014" timestamp="1598551754022" />
-    <state x="560" y="179" width="672" height="676" key="search.everywhere.popup" timestamp="1598552455412">
-      <screen x="0" y="23" width="1792" height="1014" />
+    <state x="640" y="171" width="768" height="742" key="search.everywhere.popup" timestamp="1598704310779">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
+    <state x="640" y="171" width="768" height="742" key="search.everywhere.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1598704310779" />
     <state x="560" y="179" width="672" height="676" key="search.everywhere.popup/0.23.1792.1014@0.23.1792.1014" timestamp="1598552455412" />
   </component>
 </project>
