@@ -19,5 +19,7 @@ namespace Misty.Domain.Entities
             Email = email;
             IsBanned = false;
         }
+        
+        private User(){}
     }
 }

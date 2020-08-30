@@ -1,6 +1,5 @@
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Misty.Domain.Entities;
 using Misty.Domain.Repositories;
 
@@ -8,21 +7,22 @@ namespace Misty.Persistence.Repositories
 {
     public class UsersRepository : IUsersRepository
     {
-        private readonly ICollection<User> _users;
+        private readonly MistyContext _context;
 
-        public UsersRepository(ICollection<User> users)
+        public UsersRepository(MistyContext context)
         {
-            _users = users;
+            _context = context;
         }
 
         public async Task Save(User user)
         {
-            _users.Add(user);
+            await _context.Users.AddAsync(user);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<User> Get(int id)
         {
-            var user = _users.SingleOrDefault(u => u.Id == id);
+            var user = await _context.Users.SingleOrDefaultAsync(u => u.Id == id);
             return user;
         }
     }

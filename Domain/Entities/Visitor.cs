@@ -7,6 +7,7 @@ namespace Misty.Domain.Entities
             IpAddress = ipAddress;
         }
 
+        public Visitor(){}
         public string IpAddress { get; }
     }
 }

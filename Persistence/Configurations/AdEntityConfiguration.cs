@@ -4,14 +4,11 @@ using Misty.Domain.Entities;
 
 namespace Misty.Persistence.Configurations
 {
-    public class ArticleEntityConfiguration : IEntityTypeConfiguration<Article>
+    public class AdEntityConfiguration : IEntityTypeConfiguration<Ad>
     {
-        public void Configure(EntityTypeBuilder<Article> builder)
+        public void Configure(EntityTypeBuilder<Ad> builder)
         {
             builder.HasKey(a => a.Id);
-
-            builder.HasMany(a => a.Comments);
-            builder.HasMany(a => a.Ads);
         }
     }
 }
