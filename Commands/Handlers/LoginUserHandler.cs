@@ -13,6 +13,7 @@ namespace Misty.Commands.Handlers
 {
     public class LoginUserHandler : IRequestHandler<LoginUser, string>
     {
+        
         public LoginUserHandler(IConfiguration configuration)
         {
             Configuration = configuration;

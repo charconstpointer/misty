@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Misty.Domain.Entities;
 using Misty.Persistence;
 
@@ -23,7 +24,9 @@ namespace Misty.Controllers
             var comment = new Comment("comment");
             article.AddComment(comment);
             await _context.Articles.AddAsync(article);
-            return Ok();
-        } 
+            await _context.SaveChangesAsync();
+            var q = await _context.Articles.FirstOrDefaultAsync();
+            return Ok(q);
+        }
     }
 }

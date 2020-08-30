@@ -2,5 +2,7 @@
 {
     public class Ad
     {
+        public int Id { get; }
+        private Ad(){}
     }
 }

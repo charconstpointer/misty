@@ -71,10 +71,12 @@ namespace Misty
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "Shrie? Shrie.", Version = "v1"});
             });
             services.AddTransient<IArticlesRepository, ArticlesRepository>();
+            services.AddTransient<IUsersRepository, UsersRepository>();
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddSingleton<ICollection<User>>(_ => new HashSet<User>());
             services.AddSingleton<ICollection<Article>>(_ => new HashSet<Article>());
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -88,7 +90,9 @@ namespace Misty
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-
+            using (var scope = app.ApplicationServices.CreateScope())
+            using (var context = scope.ServiceProvider.GetService<MistyContext>())
+                context.Database.EnsureCreated();
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }

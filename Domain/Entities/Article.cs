@@ -8,21 +8,23 @@ namespace Misty.Domain.Entities
     {
         private Article(string description, string title)
         {
-            var random = new Random();
-            Id = random.Next(int.MaxValue);
             Description = description;
             Title = title;
             _ads = new HashSet<Ad>();
             _comments = new HashSet<Comment>();
         }
 
+        private Article()
+        {
+        }
+
         public int Id { get; }
-        public string Title { get; }
-        public string Description { get; }
+        public string Title { get; private set; }
+        public string Description { get; private set; }
         private readonly ISet<Comment> _comments;
-        public IReadOnlyCollection<Comment> Comments => _comments.ToImmutableList();
+        public IEnumerable<Comment> Comments => _comments.ToImmutableList();
         private readonly ISet<Ad> _ads;
-        public IReadOnlyCollection<Ad> Ads => _ads.ToImmutableList();
+        public IEnumerable<Ad> Ads => _ads.ToImmutableList();
 
         public void AddComment(Comment comment)
         {
