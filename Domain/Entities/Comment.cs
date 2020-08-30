@@ -6,6 +6,7 @@ namespace Misty.Domain.Entities
     {
         public Comment(string content)
         {
+            //TODO validate content
             var snapshot = DateTime.UtcNow;
             Content = content;
             CreatedAt = snapshot;

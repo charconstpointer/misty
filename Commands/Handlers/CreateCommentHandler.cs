@@ -4,29 +4,34 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Misty.Commands.Comments;
 using Misty.Domain.Entities;
+using Misty.Domain.Repositories;
+using Misty.Persistence;
 
 namespace Misty.Commands.Handlers
 {
     public class CreateCommentHandler : IRequestHandler<CreateComment>
     {
-        private readonly ICollection<Article> _articles;
+        private readonly MistyContext _context;
 
-        public CreateCommentHandler(ICollection<Article> articles)
+        public CreateCommentHandler(MistyContext context)
         {
-            _articles = articles;
+            _context = context;
         }
 
-        public Task<Unit> Handle(CreateComment request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateComment request, CancellationToken cancellationToken)
         {
-            var article = _articles.SingleOrDefault(a => a.Id == request.ArticleId);
+            var article = await _context.Articles.SingleOrDefaultAsync(a => a.Id == request.ArticleId,
+                cancellationToken: cancellationToken);
             if (article == null)
                 throw new ApplicationException($"Article with id : {request.ArticleId} could not be found");
 
             var comment = new Comment(request.Content);
             article.AddComment(comment);
-            return Unit.Task;
+            await _context.SaveChangesAsync(cancellationToken);
+            return Unit.Value;
         }
     }
 }

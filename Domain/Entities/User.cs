@@ -6,8 +6,6 @@ namespace Misty.Domain.Entities
     {
         public User(string username, string password, string email, string ipAddress) : base(ipAddress)
         {
-            var random = new Random();
-            Id = random.Next(int.MaxValue);
             Username = username;
             Password = password;
             Email = email;
@@ -20,8 +18,8 @@ namespace Misty.Domain.Entities
 
         public int Id { get; }
         public string Username { get; }
-        public string Password { get; }
-        public string Email { get; }
-        public bool IsBanned { get; }
+        public string Password { get; private set; }
+        public string Email { get; private set; }
+        public bool IsBanned { get; private set; }
     }
 }

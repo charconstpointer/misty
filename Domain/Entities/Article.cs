@@ -6,8 +6,8 @@ namespace Misty.Domain.Entities
 {
     public class Article
     {
-        private readonly ISet<Ad> _ads;
-        private readonly ISet<Comment> _comments;
+        private readonly ICollection<Ad> _ads;
+        private readonly ICollection<Comment> _comments;
 
         private Article(string description, string title)
         {

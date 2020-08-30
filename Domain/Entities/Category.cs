@@ -8,6 +8,10 @@
             Description = description;
         }
 
+        private Category()
+        {
+        }
+
         public int Id { get; private set; }
         public string Name { get; }
         public string Description { get; }
