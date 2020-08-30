@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Misty.Commands.Categories;
-using Misty.Domain.Entities;
+using Misty.Queries.Categories;
 
 namespace Misty.Controllers
 {
@@ -31,6 +31,6 @@ namespace Misty.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetCategories()
-            => Ok();
+            => Ok(await _mediator.Send(new GetCategories()));
     }
 }

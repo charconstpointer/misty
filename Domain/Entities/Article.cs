@@ -21,6 +21,7 @@ namespace Misty.Domain.Entities
         public int Id { get; }
         public string Title { get; private set; }
         public string Description { get; private set; }
+        public Category Category { get; private set; }
         private readonly ISet<Comment> _comments;
         public IEnumerable<Comment> Comments => _comments.ToImmutableList();
         private readonly ISet<Ad> _ads;
@@ -32,6 +33,7 @@ namespace Misty.Domain.Entities
 
             _comments.Add(comment);
         }
+        
 
         public static Article Create(string title, string description)
         {

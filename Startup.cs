@@ -37,7 +37,7 @@ namespace Misty
                 options.AddPolicy("AllowAll",
                     corsBuilder =>
                     {
-                           corsBuilder
+                        corsBuilder
                             .WithOrigins("localhost:3000")
                             .WithOrigins("http://localhost:3000")
                             .AllowAnyMethod()
@@ -72,6 +72,8 @@ namespace Misty
             });
             services.AddTransient<IArticlesRepository, ArticlesRepository>();
             services.AddTransient<IUsersRepository, UsersRepository>();
+            services.AddTransient<ICategoriesRepository, CategoriesRepository>();
+            services.AddTransient<IAdsRepository, AdsRepository>();
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddSingleton<ICollection<User>>(_ => new HashSet<User>());
             services.AddSingleton<ICollection<Article>>(_ => new HashSet<Article>());

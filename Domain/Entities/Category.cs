@@ -9,10 +9,8 @@ namespace Misty.Domain.Entities
         public string Description { get; private set; }
         
 
-        public Category(int id, string name, string description)
+        public Category(string name, string description)
         {
-            var random = new Random();
-            Id = random.Next(int.MaxValue);
             Name = name;
             Description = description;
         }
