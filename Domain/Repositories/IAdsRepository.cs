@@ -4,6 +4,5 @@ namespace Misty.Domain.Repositories
 {
     public interface IAdsRepository : IRepository<Ad>
     {
-        
     }
 }

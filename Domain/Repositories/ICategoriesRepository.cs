@@ -4,6 +4,5 @@ namespace Misty.Domain.Repositories
 {
     public interface ICategoriesRepository : IRepository<Category>
     {
-        
     }
 }

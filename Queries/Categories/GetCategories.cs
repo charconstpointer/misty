@@ -6,6 +6,5 @@ namespace Misty.Queries.Categories
 {
     public class GetCategories : IRequest<IEnumerable<Category>>
     {
-        
     }
 }

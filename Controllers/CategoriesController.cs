@@ -19,18 +19,26 @@ namespace Misty.Controllers
 
         [HttpPost]
         public async Task<IActionResult> CreateCategory(CreateNewCategory command)
-            => Created("", await _mediator.Send(command));
+        {
+            return Created("", await _mediator.Send(command));
+        }
 
         [HttpDelete("{categoryId:int}")]
         public async Task<IActionResult> DeleteCategory(int categoryId)
-            => NoContent();
+        {
+            return NoContent();
+        }
 
         [HttpPut("{categoryId:int}")]
         public async Task<IActionResult> UpdateCategory(int categoryId)
-            => NoContent();
+        {
+            return NoContent();
+        }
 
         [HttpGet]
         public async Task<IActionResult> GetCategories()
-            => Ok(await _mediator.Send(new GetCategories()));
+        {
+            return Ok(await _mediator.Send(new GetCategories()));
+        }
     }
 }

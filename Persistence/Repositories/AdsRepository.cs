@@ -33,7 +33,7 @@ namespace Misty.Persistence.Repositories
 
         public async Task Update(int id, Ad article)
         {
-            var ad =await  Get(id);
+            var ad = await Get(id);
             //TODO Update Ad
         }
 

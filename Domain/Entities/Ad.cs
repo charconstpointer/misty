@@ -2,7 +2,10 @@
 {
     public class Ad
     {
+        private Ad()
+        {
+        }
+
         public int Id { get; }
-        private Ad(){}
     }
 }

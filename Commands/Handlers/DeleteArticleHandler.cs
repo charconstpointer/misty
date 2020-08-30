@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Misty.Commands.Articles;
-using Misty.Domain.Entities;
 using Misty.Domain.Repositories;
 
 namespace Misty.Commands.Handlers

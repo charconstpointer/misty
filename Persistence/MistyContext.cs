@@ -9,7 +9,7 @@ namespace Misty.Persistence
         public MistyContext(DbContextOptions options) : base(options)
         {
         }
-        
+
         public DbSet<Article> Articles { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Ad> Ads { get; set; }

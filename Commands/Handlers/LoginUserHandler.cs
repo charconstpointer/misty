@@ -13,13 +13,13 @@ namespace Misty.Commands.Handlers
 {
     public class LoginUserHandler : IRequestHandler<LoginUser, string>
     {
-        
         public LoginUserHandler(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; private set; }
+        public IConfiguration Configuration { get; }
+
         public async Task<string> Handle(LoginUser request, CancellationToken cancellationToken)
         {
             var token = Token(request.Username);

@@ -24,8 +24,8 @@ namespace Misty.Persistence.Repositories
         public async Task<Article> Get(int id)
         {
             var article = await _context.Articles
-                .Include(a=>a.Ads)
-                .Include(a=>a.Comments)
+                .Include(a => a.Ads)
+                .Include(a => a.Comments)
                 .SingleOrDefaultAsync(a => a.Id == id);
             return article;
         }
@@ -33,8 +33,8 @@ namespace Misty.Persistence.Repositories
         public async Task<IEnumerable<Article>> GetAll()
         {
             return await _context.Articles
-                .Include(a=>a.Ads)
-                .Include(a=>a.Comments)
+                .Include(a => a.Ads)
+                .Include(a => a.Comments)
                 .ToListAsync();
         }
 
