@@ -12,7 +12,7 @@ namespace Misty.Domain.Entities
         public int Id { get; }
         public string Path { get; private set; }
         public decimal PricePerView { get; private set; }
-        public DateTime CreatedAt { get; }
+        public DateTime CreatedAt { get; private set; }
         public Advertiser Advertiser { get; private set; }
 
         public Ad(string path, decimal price, Advertiser advertiser)
@@ -26,7 +26,7 @@ namespace Misty.Domain.Entities
 
         public void Edit(Advertiser advertiser, string path = "", decimal price = -1)
         {
-            if(advertiser != Advertiser) throw new ApplicationException("You can only edit ads you own");
+            if (advertiser != Advertiser) throw new ApplicationException("You can only edit ads you own");
             if (!string.IsNullOrEmpty(path))
             {
                 Path = path;
