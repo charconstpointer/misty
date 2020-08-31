@@ -1,23 +1,34 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Misty.Commands.Articles;
 using Misty.Domain.Repositories;
+using Misty.Persistence;
 
 namespace Misty.Commands.Handlers
 {
     public class DeleteArticleHandler : IRequestHandler<DeleteArticle>
     {
-        private readonly IArticlesRepository _articlesRepository;
+        private readonly MistyContext _context;
 
-        public DeleteArticleHandler(IArticlesRepository articlesRepository)
+        public DeleteArticleHandler(MistyContext context)
         {
-            _articlesRepository = articlesRepository;
+            _context = context;
         }
 
         public async Task<Unit> Handle(DeleteArticle request, CancellationToken cancellationToken)
         {
-            await _articlesRepository.Delete(request.ArticleId);
+            var article = await _context.Articles.SingleOrDefaultAsync(a => a.Id == request.ArticleId,
+                cancellationToken: cancellationToken);
+            if (article == null)
+            {
+                throw new ApplicationException("Article not found");
+            }
+
+            _context.Articles.Remove(article);
+            await _context.SaveChangesAsync(cancellationToken);
             return Unit.Value;
         }
     }

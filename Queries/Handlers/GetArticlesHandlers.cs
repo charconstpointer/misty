@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Misty.Domain.Entities;
+using Misty.Domain.Entities.Content;
 using Misty.Persistence;
 
 namespace Misty.Queries.Handlers
@@ -37,6 +38,7 @@ namespace Misty.Queries.Handlers
                 .Include(a => a.Ads)
                 .Include(a => a.Comments)
                 .Include(a => a.Category)
+                .Include(a=>a.Tags)
                 .ToListAsync(cancellationToken: cancellationToken);
             return articles;
         }

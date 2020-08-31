@@ -6,9 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Misty.Domain.Repositories;
 using Misty.Persistence;
-using Misty.Persistence.Repositories;
 
 namespace Misty.Extensions
 {
@@ -17,10 +15,6 @@ namespace Misty.Extensions
         public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<MistyContext>(p => p.UseSqlServer(configuration.GetConnectionString("db")));
-            services.AddTransient<IArticlesRepository, ArticlesRepository>();
-            services.AddTransient<IUsersRepository, UsersRepository>();
-            services.AddTransient<ICategoriesRepository, CategoriesRepository>();
-            services.AddTransient<IAdsRepository, AdsRepository>();
             return services;
         }
 

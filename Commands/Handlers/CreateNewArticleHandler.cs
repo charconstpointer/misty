@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Misty.Commands.Articles;
 using Misty.Domain.Entities;
+using Misty.Domain.Entities.Content;
 using Misty.Domain.Repositories;
 using Misty.Persistence;
 
@@ -11,12 +12,10 @@ namespace Misty.Commands.Handlers
 {
     public class CreateNewArticleHandler : IRequestHandler<CreateNewArticle>
     {
-        private readonly IArticlesRepository _articlesRepository;
         private readonly MistyContext _context;
 
-        public CreateNewArticleHandler(IArticlesRepository articlesRepository, MistyContext context)
+        public CreateNewArticleHandler(MistyContext context)
         {
-            _articlesRepository = articlesRepository;
             _context = context;
         }
 
@@ -24,7 +23,7 @@ namespace Misty.Commands.Handlers
         {
             var category = await _context.Categories.SingleOrDefaultAsync(c => c.Id == request.CategoryId,
                 cancellationToken);
-            var article = Article.Create(request.Title, request.Description, category);
+            var article = new Article(request.Title, request.Description, category);
             await _context.Articles.AddAsync(article, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
             return Unit.Value;

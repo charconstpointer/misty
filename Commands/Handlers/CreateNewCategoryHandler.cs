@@ -4,22 +4,24 @@ using MediatR;
 using Misty.Commands.Categories;
 using Misty.Domain.Entities;
 using Misty.Domain.Repositories;
+using Misty.Persistence;
 
 namespace Misty.Commands.Handlers
 {
     public class CreateNewCategoryHandler : IRequestHandler<CreateNewCategory>
     {
-        private readonly ICategoriesRepository _categoriesRepository;
+        private readonly MistyContext _context;
 
-        public CreateNewCategoryHandler(ICategoriesRepository categoriesRepository)
+        public CreateNewCategoryHandler(MistyContext context)
         {
-            _categoriesRepository = categoriesRepository;
+            _context = context;
         }
 
         public async Task<Unit> Handle(CreateNewCategory request, CancellationToken cancellationToken)
         {
             var category = new Category(request.Name, request.Description);
-            await _categoriesRepository.Save(category);
+            await _context.Categories.AddAsync(category, cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
             return Unit.Value;
         }
     }

@@ -10,15 +10,17 @@ using Misty.Commands.Users;
 using Misty.Domain.Entities;
 using Misty.Domain.Enums;
 using Misty.Domain.Repositories;
+using Misty.Persistence;
 
 namespace Misty.Commands.Handlers
 {
     public class CreateNewUserHandler : IRequestHandler<CreateNewUser>
     {
-        private readonly IUsersRepository _usersRepository;
-        public CreateNewUserHandler(IUsersRepository usersRepository)
+        private readonly MistyContext _context;
+
+        public CreateNewUserHandler(MistyContext context)
         {
-            _usersRepository = usersRepository;
+            _context = context;
         }
 
         public async Task<Unit> Handle(CreateNewUser request, CancellationToken cancellationToken)
@@ -46,9 +48,9 @@ namespace Misty.Commands.Handlers
                 _ => throw new ArgumentOutOfRangeException()
             };
 
-            await _usersRepository.Save(user);
+            await _context.Users.AddAsync(user, cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
             return Unit.Value;
         }
-        
     }
 }
