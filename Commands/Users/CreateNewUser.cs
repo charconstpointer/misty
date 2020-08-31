@@ -1,4 +1,6 @@
+using System.Net;
 using MediatR;
+using Misty.Domain.Enums;
 
 namespace Misty.Commands.Users
 {
@@ -7,5 +9,7 @@ namespace Misty.Commands.Users
         public string Username { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
+        public UserType UserType { get; set; }
+        public string IpAddress { get; set; }
     }
 }

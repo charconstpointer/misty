@@ -17,7 +17,7 @@ namespace Misty.Domain.Entities
         }
 
         public int Id { get; }
-        public string Username { get; }
+        public string Username { get; private set; }
         public string Password { get; private set; }
         public string Email { get; private set; }
         public bool IsBanned { get; private set; }
