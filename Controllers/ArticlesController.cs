@@ -27,9 +27,9 @@ namespace Misty.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetArticles()
+        public async Task<IActionResult> GetArticles(int categoryId = -1)
         {
-            return Ok(await _mediator.Send(new GetArticles()));
+            return Ok(await _mediator.Send(new GetArticles {CategoryId = categoryId}));
         }
 
         [HttpGet("{id:int}")]

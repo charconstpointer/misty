@@ -6,5 +6,6 @@ namespace Misty.Queries
 {
     public class GetArticles : IRequest<IEnumerable<Article>>
     {
+        public int CategoryId { get; set; }
     }
 }
