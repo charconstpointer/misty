@@ -2,9 +2,9 @@ using System;
 
 namespace Misty.Domain.Entities
 {
-    public class User : Visitor
+    public class RegisteredUser : Visitor
     {
-        public User(string username, string password, string email, string ipAddress) : base(ipAddress)
+        public RegisteredUser(string username, string password, string email, string ipAddress) : base(ipAddress)
         {
             Username = username;
             Password = password;
@@ -12,7 +12,7 @@ namespace Misty.Domain.Entities
             IsBanned = false;
         }
 
-        private User()
+        internal RegisteredUser()
         {
         }
 

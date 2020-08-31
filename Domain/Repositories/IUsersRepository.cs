@@ -5,7 +5,7 @@ namespace Misty.Domain.Repositories
 {
     public interface IUsersRepository
     {
-        Task Save(User user);
-        Task<User> Get(int id);
+        Task Save(RegisteredUser registeredUser);
+        Task<RegisteredUser> Get(int id);
     }
 }

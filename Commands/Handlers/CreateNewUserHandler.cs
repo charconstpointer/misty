@@ -18,7 +18,7 @@ namespace Misty.Commands.Handlers
 
         public async Task<Unit> Handle(CreateNewUser request, CancellationToken cancellationToken)
         {
-            var user = new User(request.Username, request.Password, request.Email, "");
+            var user = new RegisteredUser(request.Username, request.Password, request.Email, "");
             await _usersRepository.Save(user);
             return Unit.Value;
         }

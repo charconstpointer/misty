@@ -4,9 +4,9 @@ using Misty.Domain.Entities;
 
 namespace Misty.Persistence.Configurations
 {
-    public class UserEntityConfiguration : IEntityTypeConfiguration<User>
+    public class UserEntityConfiguration : IEntityTypeConfiguration<RegisteredUser>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<RegisteredUser> builder)
         {
             builder.HasKey(u => u.Id);
         }

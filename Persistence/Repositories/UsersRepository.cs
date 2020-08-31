@@ -14,13 +14,13 @@ namespace Misty.Persistence.Repositories
             _context = context;
         }
 
-        public async Task Save(User user)
+        public async Task Save(RegisteredUser registeredUser)
         {
-            await _context.Users.AddAsync(user);
+            await _context.Users.AddAsync(registeredUser);
             await _context.SaveChangesAsync();
         }
 
-        public async Task<User> Get(int id)
+        public async Task<RegisteredUser> Get(int id)
         {
             var user = await _context.Users.SingleOrDefaultAsync(u => u.Id == id);
             return user;
