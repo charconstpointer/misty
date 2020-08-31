@@ -9,10 +9,11 @@ namespace Misty.Domain.Entities
         private readonly ICollection<Ad> _ads;
         private readonly ICollection<Comment> _comments;
 
-        private Article(string description, string title)
+        private Article(string description, string title, Category category)
         {
             Description = description;
             Title = title;
+            Category = category;
             _ads = new HashSet<Ad>();
             _comments = new HashSet<Comment>();
         }
@@ -36,15 +37,14 @@ namespace Misty.Domain.Entities
         }
 
 
-        public static Article Create(string title, string description)
+        public static Article Create(string title, string description, Category category)
         {
             if (string.IsNullOrEmpty(title))
                 throw new ArgumentException($"'{nameof(title)}' cannot be null or empty", nameof(title));
 
             if (string.IsNullOrEmpty(description))
                 throw new ArgumentException($"'{nameof(description)}' cannot be null or empty", nameof(description));
-
-            var article = new Article(title, description);
+            var article = new Article(title, description, category);
             return article;
         }
     }

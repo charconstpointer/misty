@@ -20,7 +20,7 @@ namespace Misty.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        // [Authorize]
         public async Task<IActionResult> CreateArticle(CreateNewArticle command)
         {
             return Created("", await _mediator.Send(command));
@@ -46,7 +46,7 @@ namespace Misty.Controllers
         }
 
         [HttpPost("{articleId:int}/comments")]
-        [Authorize]
+        // [Authorize]
         public async Task<IActionResult> CreateComment(int articleId, CreateComment command)
         {
             command.ArticleId = articleId;
