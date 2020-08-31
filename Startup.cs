@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -5,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Misty.Extensions;
+using Misty.Persistence;
 
 namespace Misty
 {
@@ -27,6 +29,11 @@ namespace Misty
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            using (var scope =
+                app.ApplicationServices.CreateScope())
+            using (var context = scope.ServiceProvider.GetService<MistyContext>())
+                context?.Database.EnsureCreated();
+
             app.UseHttpsRedirection();
             app.UseCors("AllowAll");
             app.UseSwagger();
