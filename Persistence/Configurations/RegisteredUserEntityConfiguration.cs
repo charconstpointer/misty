@@ -4,7 +4,7 @@ using Misty.Domain.Entities;
 
 namespace Misty.Persistence.Configurations
 {
-    public class UserEntityConfiguration : IEntityTypeConfiguration<RegisteredUser>
+    public class RegisteredUserEntityConfiguration : IEntityTypeConfiguration<RegisteredUser>
     {
         public void Configure(EntityTypeBuilder<RegisteredUser> builder)
         {

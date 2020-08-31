@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Misty.Commands.Ads;
+using Misty.Queries.Ads;
 
 namespace Misty.Controllers
 {
@@ -31,13 +32,14 @@ namespace Misty.Controllers
         [HttpGet("{adId:int}")]
         public async Task<IActionResult> GetAd(int adId)
         {
-            return Ok();
+            var q = new GetAd {AdId = adId};
+            return Ok(await _mediator.Send(q));
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAds()
         {
-            return Ok();
+            return Ok(await _mediator.Send(new GetAds()));
         }
     }
 }

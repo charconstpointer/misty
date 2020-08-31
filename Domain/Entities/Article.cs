@@ -22,8 +22,8 @@ namespace Misty.Domain.Entities
         }
 
         public int Id { get; }
-        public string Title { get; }
-        public string Description { get; }
+        public string Title { get; private set; }
+        public string Description { get; private set; }
         public Category Category { get; private set; }
         public IEnumerable<Comment> Comments => _comments.ToImmutableList();
         public IEnumerable<Ad> Ads => _ads.ToImmutableList();

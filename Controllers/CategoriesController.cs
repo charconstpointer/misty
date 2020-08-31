@@ -26,7 +26,7 @@ namespace Misty.Controllers
         [HttpDelete("{categoryId:int}")]
         public async Task<IActionResult> DeleteCategory(int categoryId)
         {
-            return NoContent();
+            return Ok(await _mediator.Send(new DeleteCategory {CategoryId = categoryId}));
         }
 
         [HttpPut("{categoryId:int}")]
