@@ -9,7 +9,7 @@ namespace Misty.Domain.Entities
         private readonly ICollection<Ad> _ads;
         private readonly ICollection<Comment> _comments;
 
-        private Article(string description, string title, Category category)
+        private Article(string title, string description, Category category)
         {
             Description = description;
             Title = title;

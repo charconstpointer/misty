@@ -23,7 +23,7 @@ namespace Misty.Commands.Handlers
         public async Task<Unit> Handle(CreateNewArticle request, CancellationToken cancellationToken)
         {
             var category = await _context.Categories.SingleOrDefaultAsync(c => c.Id == request.CategoryId,
-                cancellationToken: cancellationToken);
+                cancellationToken);
             var article = Article.Create(request.Title, request.Description, category);
             await _context.Articles.AddAsync(article, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
