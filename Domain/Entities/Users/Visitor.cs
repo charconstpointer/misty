@@ -11,6 +11,6 @@ namespace Misty.Domain.Entities.Users
         {
         }
 
-        public string IpAddress { get; }
+        public string IpAddress { get; private set; }
     }
 }

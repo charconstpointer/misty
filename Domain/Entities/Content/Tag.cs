@@ -15,7 +15,7 @@ namespace Misty.Domain.Entities.Content
         }
 
         public int Id { get; private set; }
-        public string Name { get; }
-        public DateTime CreatedAt { get; }
+        public string Name { get; private set; }
+        public DateTime CreatedAt { get; private set; }
     }
 }

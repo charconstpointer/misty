@@ -19,7 +19,7 @@ namespace Misty.Domain.Entities.Content
 
         public int Id { get; }
         public string Content { get; private set; }
-        public DateTime CreatedAt { get; }
+        public DateTime CreatedAt { get; private set; }
         public DateTime LastChangedAt { get; private set; }
 
         public void Edit(string content)
