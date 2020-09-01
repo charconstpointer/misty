@@ -8,8 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Primitives;
 using Misty.Commands.Articles;
-using Misty.Domain.Entities.Content;
-using Misty.Domain.Entities.Users;
+using Misty.Domain.Entities.Content;    
 using Misty.Persistence;
 
 namespace Misty.Commands.Handlers

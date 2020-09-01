@@ -19,7 +19,10 @@ namespace Misty.Queries.Handlers
 
         public async Task<IEnumerable<Comment>> Handle(GetArticleComments request, CancellationToken cancellationToken)
         {
-            var article = await _context.Articles.SingleOrDefaultAsync(a => a.Id == request.ArticleId,
+            var article = await _context.Articles
+                .Include(a => a.Comments)
+                .SingleOrDefaultAsync(
+                a => a.Id == request.ArticleId,
                 cancellationToken);
             var comments = article.Comments;
             return comments;

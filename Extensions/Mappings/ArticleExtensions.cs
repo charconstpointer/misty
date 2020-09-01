@@ -10,6 +10,7 @@ namespace Misty.Extensions.Mappings
         public static ArticleDto AsDto(this Article article)
             => new ArticleDto
             {
+                Id = article.Id,
                 Title = article.Title,
                 Description = article.Description,
                 Body = article.Body,

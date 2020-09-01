@@ -9,9 +9,9 @@ namespace Misty.Domain.Entities.Content
     //TODO impl missing functionality
     public abstract class Content
     {
-        private readonly ICollection<Ad> _ads;
-        private readonly ICollection<Comment> _comments;
-        private readonly ICollection<Tag> _tags;
+        private readonly ICollection<Ad> _ads = new HashSet<Ad>();
+        private readonly ICollection<Comment> _comments = new List<Comment>();
+        private readonly ICollection<Tag> _tags = new HashSet<Tag>();
 
         protected Content()
         {
