@@ -17,6 +17,9 @@ namespace Misty.Persistence
         public DbSet<Category> Categories { get; set; }
         public DbSet<Ad> Ads { get; set; }
         public DbSet<RegisteredUser> Users { get; set; }
+        public DbSet<Creator> Creators { get; set; }
+        public DbSet<Moderator> Moderators { get; set; }
+        public DbSet<Advertiser> Advertisers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Misty.Domain.Entities.Users
 {
     public class Moderator : RegisteredUser
