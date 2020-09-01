@@ -7,6 +7,7 @@ namespace Misty.Commands.Articles
     {
         public string Title { get; set; }
         public string Description { get; set; }
+        public string Body { get; set; }
         public int CategoryId { get; set; }
         public bool Ads { get; set; }
         public IEnumerable<string> Tags { get; set; }
