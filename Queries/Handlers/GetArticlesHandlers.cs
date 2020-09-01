@@ -22,7 +22,7 @@ namespace Misty.Queries.Handlers
         public async Task<IEnumerable<Article>> Handle(GetArticles request, CancellationToken cancellationToken)
         {
             var filterByCategory = request.CategoryId > 0;
-            IEnumerable<Article> articles;
+            IEnumerable<Content> articles;
             if (filterByCategory)
             {
                 articles = await _context.Articles
@@ -31,7 +31,7 @@ namespace Misty.Queries.Handlers
                     .Include(a => a.Category)
                     .Where(a=>a.Category.Id == request.CategoryId)
                     .ToListAsync(cancellationToken: cancellationToken);
-                return articles;
+                return articles.Select(c=>c as Article);
             }
 
             articles = await _context.Articles
@@ -40,7 +40,7 @@ namespace Misty.Queries.Handlers
                 .Include(a => a.Category)
                 .Include(a=>a.Tags)
                 .ToListAsync(cancellationToken: cancellationToken);
-            return articles;
+            return articles.Select(c=>c as Article);
         }
     }
 }

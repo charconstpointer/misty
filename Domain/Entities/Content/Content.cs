@@ -1,12 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
+using Misty.Domain.Entities.Users;
 using Misty.Domain.Enums;
 
 namespace Misty.Domain.Entities.Content
 {
+    //TODO impl missing functionality
     public abstract class Content
     {
-        public int Id { get; private set; }
+        public int Id { get; }
         public Category Category { get; private set; }
         public string Title { get; private set; }
         public string Description { get; private set; }
@@ -17,8 +19,13 @@ namespace Misty.Domain.Entities.Content
         public IEnumerable<Ad> Ads => _ads.ToList();
         private readonly ICollection<Comment> _comments;
         public IEnumerable<Comment> Comments => _comments.ToList();
+        public Creator Creator { get; private set; }
         public ContentState State { get; private set; }
-        protected Content(){}
+
+        protected Content()
+        {
+        }
+
         protected Content(string title, string description, Category category = null)
         {
             Title = title;
@@ -38,6 +45,11 @@ namespace Misty.Domain.Entities.Content
                 var t = new Tag(tag);
                 _tags.Add(t);
             }
+        }
+
+        public void AddAd(Ad ad)
+        {
+            _ads.Add(ad);
         }
 
         public void AddComment(Comment comment)

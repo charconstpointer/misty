@@ -1,17 +1,12 @@
 using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Http;
-using Microsoft.IdentityModel.Tokens;
 using Misty.Commands.Users;
 using Misty.Domain.Entities;
 using Misty.Domain.Entities.Users;
 using Misty.Domain.Enums;
-using Misty.Domain.Repositories;
 using Misty.Persistence;
 
 namespace Misty.Commands.Handlers

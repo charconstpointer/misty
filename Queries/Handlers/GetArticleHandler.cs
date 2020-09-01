@@ -3,9 +3,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Misty.Domain.Entities;
 using Misty.Domain.Entities.Content;
-using Misty.Domain.Repositories;
 using Misty.Persistence;
 
 namespace Misty.Queries.Handlers
@@ -30,7 +28,7 @@ namespace Misty.Queries.Handlers
                 .Include(a => a.Comments)
                 .Include(a => a.Category)
                 .SingleOrDefaultAsync(a => a.Id == request.ArticleId, cancellationToken: cancellationToken);
-            return article;
+            return article as Article;
         }
     }
 }
