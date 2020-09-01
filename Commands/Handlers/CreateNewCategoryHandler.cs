@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Misty.Commands.Categories;
 using Misty.Domain.Entities;
+using Misty.Domain.Entities.Content;
 using Misty.Persistence;
 
 namespace Misty.Commands.Handlers

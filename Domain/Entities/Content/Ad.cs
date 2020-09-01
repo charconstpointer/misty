@@ -1,7 +1,7 @@
 ﻿using System;
 using Misty.Domain.Entities.Users;
 
-namespace Misty.Domain.Entities
+namespace Misty.Domain.Entities.Content
 {
     public class Ad
     {

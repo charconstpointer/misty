@@ -1,6 +1,4 @@
-using System;
-
-namespace Misty.Domain.Entities
+namespace Misty.Domain.Entities.Users
 {
     public class RegisteredUser : Visitor
     {

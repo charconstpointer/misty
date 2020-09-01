@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Misty.Domain.Entities;
+using Misty.Domain.Entities.Content;
 using Misty.Persistence;
 
 namespace Misty.Queries.Handlers

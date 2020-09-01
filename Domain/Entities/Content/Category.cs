@@ -1,4 +1,4 @@
-﻿namespace Misty.Domain.Entities
+﻿namespace Misty.Domain.Entities.Content
 {
     public class Category
     {

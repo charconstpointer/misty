@@ -5,6 +5,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Misty.Commands.Comments;
 using Misty.Domain.Entities;
+using Misty.Domain.Entities.Content;
 using Misty.Persistence;
 
 namespace Misty.Commands.Handlers

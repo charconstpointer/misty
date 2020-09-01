@@ -1,4 +1,4 @@
-using System.ComponentModel.DataAnnotations.Schema;
+using Misty.Domain.Entities.Content;
 
 namespace Misty.Domain.Entities.Users
 {

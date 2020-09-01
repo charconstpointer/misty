@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Misty.Domain.Entities
+namespace Misty.Domain.Entities.Content
 {
     public class Comment
     {
