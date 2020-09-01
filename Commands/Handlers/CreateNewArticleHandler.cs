@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Primitives;
 using Misty.Commands.Articles;
-using Misty.Domain.Entities.Content;    
+using Misty.Domain.Entities.Content;
 using Misty.Persistence;
 
 namespace Misty.Commands.Handlers
@@ -38,6 +38,7 @@ namespace Misty.Commands.Handlers
                 throw new ApplicationException("No such creator");
             }
 
+            var cats = await _context.Categories.ToListAsync();
             var category = await _context.Categories.SingleOrDefaultAsync(c => c.Id == request.CategoryId,
                 cancellationToken);
             var article = new Article(request.Title, request.Description, creator, category);
