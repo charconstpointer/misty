@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Misty.Domain.Entities.Users;
@@ -16,7 +17,7 @@ namespace Misty.Domain.Entities.Content
         {
         }
 
-        protected Content(string title, string description, Category category = null)
+        protected Content(string title, string description, Creator creator, Category category = null)
         {
             Title = title;
             Description = description;
@@ -24,8 +25,11 @@ namespace Misty.Domain.Entities.Content
             _comments = new List<Comment>();
             _ads = new HashSet<Ad>();
             _tags = new HashSet<Tag>();
+            Creator = creator;
             State = ContentState.Created;
             AdsEnabled = true;
+            
+            creator.AddContent(this);
         }
 
         public int Id { get; }
@@ -33,11 +37,14 @@ namespace Misty.Domain.Entities.Content
         public string Title { get; protected set; }
         public string Description { get; protected set; }
         public bool AdsEnabled { get; protected set; }
-        public IEnumerable<Tag> Tags => _tags.ToList();
+        //TODO fix tags
+        public IEnumerable<Tag> Tags => Enumerable.Empty<Tag>();
         public IEnumerable<Ad> Ads => _ads.ToList();
         public IEnumerable<Comment> Comments => _comments.ToList();
         public Creator Creator { get; private set; }
         public ContentState State { get; protected set; }
+        public DateTime CreatedAt { get; private set; }
+        public DateTime LastModifiedAt { get; private set; }
 
         public void AddTags(params string[] tags)
         {

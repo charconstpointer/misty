@@ -30,7 +30,7 @@ namespace Misty.Commands.Handlers
         public async Task<string> Handle(LoginUser request, CancellationToken cancellationToken)
         {
             var users = await _context.Users.ToListAsync(cancellationToken);
-            var user = users.SingleOrDefault(u => u.Username.ToLower() == request.Username.ToLower());
+            var user = users.SingleOrDefault(u => u.Username?.ToLower() == request.Username.ToLower());
             if (user == null) throw new ApplicationException("User does not exists");
 
             if (user.Password != request.Password) throw new ApplicationException("Incorrect password");

@@ -13,7 +13,7 @@ namespace Misty.Domain.Entities.Users
         {
             _contents = new HashSet<Content.Content>();
         }
-
+        private Creator(){}
         public decimal Balance { get; private set; }
         public IEnumerable<Content.Content> Contents => _contents.ToList();
 

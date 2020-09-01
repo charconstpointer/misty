@@ -8,7 +8,7 @@ namespace Misty.Domain.Entities.Users
             email, ipAddress)
         {
         }
-
+        private Moderator(){}
         public Category ModeratedCategory { get; private set; }
 
         public void Verify(Advertiser advertiser)

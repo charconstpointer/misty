@@ -32,13 +32,16 @@ namespace Misty.Commands.Handlers
 
             var username = GetUsername(bearer);
 
-            var creator = await _context.Users.SingleOrDefaultAsync(u => u.Username.ToLower() == username.ToLower(),
+            var creator = await _context.Creators.SingleOrDefaultAsync(u => u.Username.ToLower() == username.ToLower(),
                 cancellationToken);
-            if (!(creator is Creator)) throw new ApplicationException("This user cannot create new articles");
+            if (creator == null)
+            {
+                throw new ApplicationException("No such creator");
+            }
 
             var category = await _context.Categories.SingleOrDefaultAsync(c => c.Id == request.CategoryId,
                 cancellationToken);
-            var article = new Article(request.Title, request.Description, category);
+            var article = new Article(request.Title, request.Description, creator, category);
             await _context.Articles.AddAsync(article, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
             return Unit.Value;

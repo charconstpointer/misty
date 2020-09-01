@@ -2,12 +2,12 @@ namespace Misty.Domain.Entities.Users
 {
     public class Advertiser : RegisteredUser
     {
-        private Advertiser()
+        public Advertiser(string username, string password, string email, string ipAddress) : base(username, password,
+            email, ipAddress)
         {
         }
 
-        public Advertiser(string username, string password, string email, string ipAddress) : base(username, password,
-            email, ipAddress)
+        private Advertiser()
         {
         }
 
