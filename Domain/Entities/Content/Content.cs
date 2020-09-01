@@ -9,10 +9,10 @@ namespace Misty.Domain.Entities.Content
     public abstract class Content
     {
         public int Id { get; }
-        public Category Category { get; private set; }
-        public string Title { get; private set; }
-        public string Description { get; private set; }
-        public bool AdsEnabled { get; private set; }
+        public Category Category { get; protected set; }
+        public string Title { get; protected set; }
+        public string Description { get; protected set; }
+        public bool AdsEnabled { get; protected set; }
         private readonly ICollection<Tag> _tags;
         public IEnumerable<Tag> Tags => _tags.ToList();
         private readonly ICollection<Ad> _ads;
@@ -20,7 +20,7 @@ namespace Misty.Domain.Entities.Content
         private readonly ICollection<Comment> _comments;
         public IEnumerable<Comment> Comments => _comments.ToList();
         public Creator Creator { get; private set; }
-        public ContentState State { get; private set; }
+        public ContentState State { get; protected set; }
 
         protected Content()
         {

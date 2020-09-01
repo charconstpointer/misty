@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
+using Misty.Domain.Enums;
 
 namespace Misty.Domain.Entities.Content
 {
     public class Gallery : Content
     {
+        public static int MinimumItemCount = 5;
         private readonly ICollection<GalleryItem> _galleryItems;
         public IEnumerable<GalleryItem> Items => _galleryItems.ToList();
 
@@ -12,6 +14,7 @@ namespace Misty.Domain.Entities.Content
             Category category = null) : base(title, description, category)
         {
             _galleryItems = new HashSet<GalleryItem>();
+            State = ContentState.Hidden;
         }
         private Gallery(){}
         public void AddItem(GalleryItem item)
