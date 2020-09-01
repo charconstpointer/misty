@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace Misty.Domain.Entities.Users
 {
     public class Advertiser : RegisteredUser
@@ -17,10 +15,7 @@ namespace Misty.Domain.Entities.Users
 
         public void Verify(Moderator moderator)
         {
-            if (!moderator.IsBanned)
-            {
-                IsVerified = true;
-            }
+            if (!moderator.IsBanned) IsVerified = true;
         }
     }
 }

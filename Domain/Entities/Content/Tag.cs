@@ -4,10 +4,6 @@ namespace Misty.Domain.Entities.Content
 {
     public class Tag
     {
-        public int Id { get; private set; }
-        public string Name { get; private set; }
-        public DateTime CreatedAt { get; private set; }
-
         public Tag(string name)
         {
             Name = name;
@@ -17,5 +13,9 @@ namespace Misty.Domain.Entities.Content
         private Tag()
         {
         }
+
+        public int Id { get; private set; }
+        public string Name { get; }
+        public DateTime CreatedAt { get; }
     }
 }

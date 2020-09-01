@@ -4,7 +4,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Misty.Domain.Entities;
 using Misty.Domain.Entities.Content;
 using Misty.Persistence;
 
@@ -29,18 +28,18 @@ namespace Misty.Queries.Handlers
                     .Include(a => a.Ads)
                     .Include(a => a.Comments)
                     .Include(a => a.Category)
-                    .Where(a=>a.Category.Id == request.CategoryId)
-                    .ToListAsync(cancellationToken: cancellationToken);
-                return articles.Select(c=>c as Article);
+                    .Where(a => a.Category.Id == request.CategoryId)
+                    .ToListAsync(cancellationToken);
+                return articles.Select(c => c as Article);
             }
 
             articles = await _context.Articles
                 .Include(a => a.Ads)
                 .Include(a => a.Comments)
                 .Include(a => a.Category)
-                .Include(a=>a.Tags)
-                .ToListAsync(cancellationToken: cancellationToken);
-            return articles.Select(c=>c as Article);
+                .Include(a => a.Tags)
+                .ToListAsync(cancellationToken);
+            return articles.Select(c => c as Article);
         }
     }
 }

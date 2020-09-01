@@ -1,7 +1,6 @@
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
@@ -29,18 +28,13 @@ namespace Misty.Commands.Handlers
         public async Task<Unit> Handle(CreateNewArticle request, CancellationToken cancellationToken)
         {
             if (!_httpContextAccessor.HttpContext.Request.Headers.TryGetValue("Authorization", out var bearer))
-            {
                 throw new ApplicationException();
-            }
 
             var username = GetUsername(bearer);
 
             var creator = await _context.Users.SingleOrDefaultAsync(u => u.Username.ToLower() == username.ToLower(),
-                cancellationToken: cancellationToken);
-            if (!(creator is Creator))
-            {
-                throw new ApplicationException("This user cannot create new articles");
-            }
+                cancellationToken);
+            if (!(creator is Creator)) throw new ApplicationException("This user cannot create new articles");
 
             var category = await _context.Categories.SingleOrDefaultAsync(c => c.Id == request.CategoryId,
                 cancellationToken);

@@ -1,6 +1,5 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
-using Misty.Domain.Entities;
 using Misty.Domain.Entities.Content;
 using Misty.Domain.Entities.Users;
 

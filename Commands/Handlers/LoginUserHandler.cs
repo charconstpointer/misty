@@ -17,28 +17,23 @@ namespace Misty.Commands.Handlers
 {
     public class LoginUserHandler : IRequestHandler<LoginUser, string>
     {
+        private readonly MistyContext _context;
+
         public LoginUserHandler(IConfiguration configuration, MistyContext context)
         {
             Configuration = configuration;
             _context = context;
         }
 
-        private readonly MistyContext _context;
         public IConfiguration Configuration { get; }
 
         public async Task<string> Handle(LoginUser request, CancellationToken cancellationToken)
         {
-            var users = (await _context.Users.ToListAsync(cancellationToken));
+            var users = await _context.Users.ToListAsync(cancellationToken);
             var user = users.SingleOrDefault(u => u.Username.ToLower() == request.Username.ToLower());
-            if (user == null)
-            {
-                throw new ApplicationException("User does not exists");
-            }
+            if (user == null) throw new ApplicationException("User does not exists");
 
-            if (user.Password != request.Password)
-            {
-                throw new ApplicationException("Incorrect password");
-            }
+            if (user.Password != request.Password) throw new ApplicationException("Incorrect password");
 
             var token = CreateToken(user.Username);
             return token;
@@ -56,12 +51,6 @@ namespace Misty.Commands.Handlers
 
             var hashSalt = new Password {Hash = hashPassword, Salt = salt};
             return hashSalt;
-        }
-
-        public class Password
-        {
-            public string Hash { get; set; }
-            public string Salt { get; set; }
         }
 
         private string CreateToken(string username)
@@ -82,6 +71,12 @@ namespace Misty.Commands.Handlers
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var wt = tokenHandler.WriteToken(token);
             return wt;
+        }
+
+        public class Password
+        {
+            public string Hash { get; set; }
+            public string Salt { get; set; }
         }
     }
 }

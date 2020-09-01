@@ -2,7 +2,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Misty.Domain.Entities;
 using Misty.Domain.Entities.Content;
 using Misty.Persistence;
 using Misty.Queries.Ads;
@@ -21,7 +20,7 @@ namespace Misty.Queries.Handlers
         public async Task<Ad> Handle(GetAd request, CancellationToken cancellationToken)
         {
             var ad = await _context.Ads.SingleOrDefaultAsync(a => a.Id == request.AdId,
-                cancellationToken: cancellationToken);
+                cancellationToken);
             return ad;
         }
     }

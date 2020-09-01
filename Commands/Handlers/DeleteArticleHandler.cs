@@ -20,11 +20,8 @@ namespace Misty.Commands.Handlers
         public async Task<Unit> Handle(DeleteArticle request, CancellationToken cancellationToken)
         {
             var article = await _context.Articles.SingleOrDefaultAsync(a => a.Id == request.ArticleId,
-                cancellationToken: cancellationToken);
-            if (article == null)
-            {
-                throw new ApplicationException("Article not found");
-            }
+                cancellationToken);
+            if (article == null) throw new ApplicationException("Article not found");
 
             _context.Articles.Remove(article);
             await _context.SaveChangesAsync(cancellationToken);

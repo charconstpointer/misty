@@ -2,7 +2,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Misty.Commands.Categories;
-using Misty.Domain.Entities;
 using Misty.Domain.Entities.Content;
 using Misty.Persistence;
 

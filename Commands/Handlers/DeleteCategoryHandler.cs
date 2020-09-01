@@ -20,11 +20,9 @@ namespace Misty.Commands.Handlers
         public async Task<Unit> Handle(DeleteCategory request, CancellationToken cancellationToken)
         {
             var category = await _context.Categories.SingleOrDefaultAsync(c => c.Id == request.CategoryId,
-                cancellationToken: cancellationToken);
+                cancellationToken);
             if (category == null)
-            {
                 throw new ApplicationException($"Category with id {request.CategoryId} could not be found");
-            }
 
             _context.Categories.Remove(category);
             await _context.SaveChangesAsync(cancellationToken);

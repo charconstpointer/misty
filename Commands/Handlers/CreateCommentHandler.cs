@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Misty.Commands.Comments;
-using Misty.Domain.Entities;
 using Misty.Domain.Entities.Content;
 using Misty.Persistence;
 
@@ -22,7 +21,7 @@ namespace Misty.Commands.Handlers
         public async Task<Unit> Handle(CreateComment request, CancellationToken cancellationToken)
         {
             var article = await _context.Articles.SingleOrDefaultAsync(a => a.Id == request.ArticleId,
-                cancellationToken: cancellationToken);
+                cancellationToken);
             if (article == null)
                 throw new ApplicationException($"Article with id : {request.ArticleId} could not be found");
 

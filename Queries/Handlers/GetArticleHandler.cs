@@ -27,8 +27,8 @@ namespace Misty.Queries.Handlers
                 .Include(a => a.Ads)
                 .Include(a => a.Comments)
                 .Include(a => a.Category)
-                .SingleOrDefaultAsync(a => a.Id == request.ArticleId, cancellationToken: cancellationToken);
-            return article as Article;
+                .SingleOrDefaultAsync(a => a.Id == request.ArticleId, cancellationToken);
+            return article;
         }
     }
 }

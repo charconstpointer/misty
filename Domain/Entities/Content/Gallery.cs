@@ -8,7 +8,6 @@ namespace Misty.Domain.Entities.Content
     {
         public static int MinimumItemCount = 5;
         private readonly ICollection<GalleryItem> _galleryItems;
-        public IEnumerable<GalleryItem> Items => _galleryItems.ToList();
 
         public Gallery(string title, string description,
             Category category = null) : base(title, description, category)
@@ -16,7 +15,13 @@ namespace Misty.Domain.Entities.Content
             _galleryItems = new HashSet<GalleryItem>();
             State = ContentState.Hidden;
         }
-        private Gallery(){}
+
+        private Gallery()
+        {
+        }
+
+        public IEnumerable<GalleryItem> Items => _galleryItems.ToList();
+
         public void AddItem(GalleryItem item)
         {
             _galleryItems.Add(item);

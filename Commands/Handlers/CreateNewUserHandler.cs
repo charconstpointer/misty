@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Misty.Commands.Users;
-using Misty.Domain.Entities;
 using Misty.Domain.Entities.Users;
 using Misty.Domain.Enums;
 using Misty.Persistence;
@@ -24,20 +23,11 @@ namespace Misty.Commands.Handlers
 
         public async Task<Unit> Handle(CreateNewUser request, CancellationToken cancellationToken)
         {
-            if (string.IsNullOrEmpty(request.Username))
-            {
-                throw new ApplicationException("Username cannot be null");
-            }
+            if (string.IsNullOrEmpty(request.Username)) throw new ApplicationException("Username cannot be null");
 
-            if (string.IsNullOrEmpty(request.Password))
-            {
-                throw new ApplicationException("Password cannot be null");
-            }
+            if (string.IsNullOrEmpty(request.Password)) throw new ApplicationException("Password cannot be null");
 
-            if (string.IsNullOrEmpty(request.Email))
-            {
-                throw new ApplicationException("Email cannot be null");
-            }
+            if (string.IsNullOrEmpty(request.Email)) throw new ApplicationException("Email cannot be null");
 
             var ipAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
             var user = request.UserType switch

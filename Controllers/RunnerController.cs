@@ -20,7 +20,7 @@ namespace Misty.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var creator = new Moderator ("un", "pw", "dd", "::1");
+            var creator = new Moderator("un", "pw", "dd", "::1");
             await _context.Users.AddAsync(creator);
             await _context.SaveChangesAsync();
             var users = await _context.Users.ToListAsync();

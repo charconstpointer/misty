@@ -31,7 +31,9 @@ namespace Misty
             using (var scope =
                 app.ApplicationServices.CreateScope())
             using (var context = scope.ServiceProvider.GetService<MistyContext>())
+            {
                 context?.Database.EnsureCreated();
+            }
 
             app.UseHttpsRedirection();
             app.UseCors("AllowAll");
