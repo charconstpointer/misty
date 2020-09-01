@@ -5,9 +5,11 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
 using Misty.Commands.Users;
 using Misty.Domain.Entities;
+using Misty.Domain.Entities.Users;
 using Misty.Domain.Enums;
 using Misty.Domain.Repositories;
 using Misty.Persistence;
@@ -17,10 +19,12 @@ namespace Misty.Commands.Handlers
     public class CreateNewUserHandler : IRequestHandler<CreateNewUser>
     {
         private readonly MistyContext _context;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public CreateNewUserHandler(MistyContext context)
+        public CreateNewUserHandler(MistyContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<Unit> Handle(CreateNewUser request, CancellationToken cancellationToken)
@@ -40,11 +44,12 @@ namespace Misty.Commands.Handlers
                 throw new ApplicationException("Email cannot be null");
             }
 
+            var ipAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
             var user = request.UserType switch
             {
-                UserType.Advertiser => new RegisteredUser(request.Username, request.Password, request.Email, ""),
-                UserType.Creator => new RegisteredUser(request.Username, request.Password, request.Email, ""),
-                UserType.Moderator => new RegisteredUser(request.Username, request.Password, request.Email, ""),
+                UserType.Advertiser => new RegisteredUser(request.Username, request.Password, request.Email, ipAddress),
+                UserType.Creator => new Creator(request.Username, request.Password, request.Email, ipAddress),
+                UserType.Moderator => new Moderator(request.Username, request.Password, request.Email, ipAddress),
                 _ => throw new ArgumentOutOfRangeException()
             };
 

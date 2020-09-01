@@ -19,7 +19,6 @@ namespace Misty.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(CreateNewUser command)
         {
-            command.IpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
             return Created("", await _mediator.Send(command));
         }
 
