@@ -13,6 +13,7 @@ namespace Misty.Dto
         public IEnumerable<string> Tags { get; set; }
         public IEnumerable<string> Comments { get; set; }
         public IEnumerable<string> Ads { get; set; }
+        public string Ad { get; set; }
         public DateTime CreatedAt { get; set; }
     }
 }

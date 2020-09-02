@@ -17,6 +17,7 @@ namespace Misty.Extensions.Mappings
                 Comments = article.Comments?.Select(c => c.Content),
                 Tags = Enumerable.Empty<string>(),
                 Ads = article.Ads?.Select(a => a.Path),
+                Ad = article.GetRandomAd()?.Path,
                 Creator = article.Creator?.Username,
                 CreatedAt = article.CreatedAt
             };

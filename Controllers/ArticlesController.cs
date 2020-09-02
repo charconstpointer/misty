@@ -45,6 +45,13 @@ namespace Misty.Controllers
             return Ok(await _mediator.Send(new DeleteArticle {ArticleId = id}));
         }
 
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> UpdateArticle(int id, UpdateArticle command)
+        {
+            command.ArticleId = id;
+            return Ok(await _mediator.Send(command));
+        }
+
         [HttpPost("{articleId:int}/comments")]
         // [Authorize]
         public async Task<IActionResult> CreateComment(int articleId, CreateComment command)

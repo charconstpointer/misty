@@ -55,6 +55,15 @@ namespace Misty.Domain.Entities.Content
             }
         }
 
+        public Ad GetRandomAd()
+        {
+            if (!AdsEnabled) return null;
+            if (!_ads.Any()) return null;
+            var random = new Random();
+            var ad = _ads?.ElementAtOrDefault(random.Next(_ads.Count));
+            return ad;
+
+        }    
         public void AddAd(Ad ad)
         {
             _ads.Add(ad);
