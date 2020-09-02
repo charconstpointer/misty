@@ -37,10 +37,10 @@ namespace Misty.Commands.Handlers
                 throw new ApplicationException("No such creator");
             }
 
-            var cats = await _context.Categories.ToListAsync();
+            var cats = await _context.Categories.ToListAsync(cancellationToken: cancellationToken);
             var category = await _context.Categories.SingleOrDefaultAsync(c => c.Id == request.CategoryId,
                 cancellationToken);
-            var article = new Article(request.Title, request.Description, creator, category);
+            var article = new Article(request.Title, request.Description, request.Body, creator, category);
             await _context.Articles.AddAsync(article, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
             return Unit.Value;
