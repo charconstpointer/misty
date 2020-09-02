@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using MediatR;
 
@@ -11,6 +12,7 @@ namespace Misty.Commands.Articles
         public string Body { get; set; }
         public int CategoryId { get; set; }
         public bool Ads { get; set; }
+        public IEnumerable<int> AdIds { get; set; }
         public IEnumerable<string> Tags { get; set; }
     }
 }

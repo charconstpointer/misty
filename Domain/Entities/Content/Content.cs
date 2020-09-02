@@ -28,7 +28,7 @@ namespace Misty.Domain.Entities.Content
             Creator = creator;
             State = ContentState.Created;
             AdsEnabled = true;
-            
+
             creator.AddContent(this);
         }
 
@@ -36,7 +36,9 @@ namespace Misty.Domain.Entities.Content
         public Category Category { get; protected set; }
         public string Title { get; protected set; }
         public string Description { get; protected set; }
+
         public bool AdsEnabled { get; protected set; }
+
         //TODO fix tags
         public IEnumerable<Tag> Tags => Enumerable.Empty<Tag>();
         public IEnumerable<Ad> Ads => _ads.ToList();
@@ -62,11 +64,30 @@ namespace Misty.Domain.Entities.Content
             var random = new Random();
             var ad = _ads?.ElementAtOrDefault(random.Next(_ads.Count));
             return ad;
+        }
 
-        }    
         public void AddAd(Ad ad)
         {
             _ads.Add(ad);
+        }
+
+        public void AddAds(IEnumerable<Ad> ads)
+        {
+            var adsList = ads.ToList();
+            if (adsList == null)
+            {
+                throw new ArgumentException("Ads cannot be null");
+            }
+
+            if (!adsList.Any())
+            {
+                throw new ArgumentException("Ads cannot be empty");
+            }
+            
+            foreach (var ad in ads)
+            {
+                AddAd(ad);
+            }
         }
 
         public void AddComment(Comment comment)
