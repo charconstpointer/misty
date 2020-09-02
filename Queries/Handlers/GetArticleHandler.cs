@@ -3,12 +3,13 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Misty.Domain.Entities.Content;
+using Misty.Dto;
+using Misty.Extensions.Mappings;
 using Misty.Persistence;
 
 namespace Misty.Queries.Handlers
 {
-    public class GetArticleHandler : IRequestHandler<GetArticle, Article>
+    public class GetArticleHandler : IRequestHandler<GetArticle, ArticleDto>
     {
         private readonly MistyContext _context;
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -20,7 +21,7 @@ namespace Misty.Queries.Handlers
         }
 
 
-        public async Task<Article> Handle(GetArticle request, CancellationToken cancellationToken)
+        public async Task<ArticleDto> Handle(GetArticle request, CancellationToken cancellationToken)
         {
             var ipAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
             var article = await _context.Articles
@@ -28,7 +29,7 @@ namespace Misty.Queries.Handlers
                 .Include(a => a.Comments)
                 .Include(a => a.Category)
                 .SingleOrDefaultAsync(a => a.Id == request.ArticleId, cancellationToken);
-            return article;
+            return article.AsDto();
         }
     }
 }
