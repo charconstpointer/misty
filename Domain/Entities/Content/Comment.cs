@@ -1,16 +1,18 @@
 ﻿using System;
+using Misty.Domain.Entities.Users;
 
 namespace Misty.Domain.Entities.Content
 {
     public class Comment
     {
-        public Comment(string content)
+        public Comment(string content, Creator author)
         {
             //TODO validate content
             var snapshot = DateTime.UtcNow;
             Content = content;
             CreatedAt = snapshot;
             LastChangedAt = snapshot;
+            Author = author;
         }
 
         private Comment()
@@ -21,6 +23,7 @@ namespace Misty.Domain.Entities.Content
         public string Content { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public DateTime LastChangedAt { get; private set; }
+        public Creator Author { get; private set; }
 
         public void Edit(string content)
         {

@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Misty.Commands;
 using Misty.Persistence;
 
 namespace Misty.Extensions
@@ -36,6 +37,7 @@ namespace Misty.Extensions
                     });
             });
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<IUserAccessor, UserAccessor>();
             services.AddControllers();
 
             services.AddAuthentication(x =>
