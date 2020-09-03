@@ -9,6 +9,7 @@ namespace Misty.Domain.Entities.Content
 {
     //TODO Content state SM
     //TODO impl missing functionality
+    //TODO delete, remove comments
     public abstract class Content
     {
         protected Content()
