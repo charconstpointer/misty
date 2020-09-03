@@ -23,6 +23,7 @@ namespace Misty.Domain.Entities.Content
             _tags = new HashSet<Tag>();
             Creator = creator;
             State = ContentState.Created;
+            CreatedAt = DateTime.UtcNow;
             AdsEnabled = true;
 
             creator.AddContent(this);

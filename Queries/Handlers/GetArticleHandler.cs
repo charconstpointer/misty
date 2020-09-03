@@ -34,6 +34,7 @@ namespace Misty.Queries.Handlers
                 .Include(a => a.Ads)
                 .Include(a => a.Comments)
                 .Include(a => a.Category)
+                .Include(a=>a.ContentVisitors)
                 .SingleOrDefaultAsync(a => a.Id == request.ArticleId, cancellationToken);
             var username = await _userAccessor.GetUsername();
             var ipAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress;

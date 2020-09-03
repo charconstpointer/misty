@@ -32,6 +32,7 @@ namespace Misty.Queries.Handlers
                     .Include(a => a.Comments)
                     .Include(a => a.Category)
                     .Include(a=>a.Creator)
+                    .Include(a=>a.ContentVisitors)
                     .Where(a => a.Category.Id == request.CategoryId)
                     .ToListAsync(cancellationToken);
                 return articles.AsDto();
@@ -42,6 +43,7 @@ namespace Misty.Queries.Handlers
                 .Include(a => a.Comments)
                 .Include(a => a.Category)
                 .Include(a=>a.Creator)
+                .Include(a=>a.ContentVisitors)
                 .ToListAsync(cancellationToken);
             return articles.AsDto();
         }
