@@ -27,18 +27,23 @@ namespace Misty.Domain.Entities.Content
         public static Ad Create(string path, decimal price, Advertiser advertiser)
         {
             if (advertiser == null) throw new ArgumentNullException(nameof(advertiser));
-            if (string.IsNullOrEmpty(path)) throw new ArgumentNullException(nameof(path));
-            if (price < 0) throw new ArgumentNullException(nameof(price));
+            ValidateAd(path, price);
             var ad = new Ad(path, price, advertiser);
             return ad;
+        }
+
+        private static void ValidateAd(string path, decimal price)
+        {
+            if (string.IsNullOrEmpty(path)) throw new ArgumentNullException(nameof(path));
+            if (price < 0) throw new ArgumentNullException(nameof(price));
         }
 
         public void Edit(Advertiser advertiser, string path = "", decimal price = -1)
         {
             if (advertiser != Advertiser) throw new ApplicationException("You can only edit ads you own");
-            if (!string.IsNullOrEmpty(path)) Path = path;
-
-            if (price > 0) PricePerView = price;
+            ValidateAd(path, price);
+            PricePerView = price;
+            Path = path;
         }
     }
 }

@@ -13,10 +13,11 @@ namespace Misty.Domain.Entities.Users
         {
         }
 
+        public int Id { get; }
         public string IpAddress { get; private set; }
         private readonly ICollection<ContentVisitor> _contentVisitors = new List<ContentVisitor>();
 
-        public void AddVisitor(ContentVisitor contentVisitor)
+        public void AddVisit(ContentVisitor contentVisitor)
         {
             if (_contentVisitors.Contains(contentVisitor))
             {

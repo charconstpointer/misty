@@ -19,14 +19,18 @@ namespace Misty.Commands
         public async Task<string> GetUsername()
         {
             if (!_httpContextAccessor.HttpContext.Request.Headers.TryGetValue("Authorization", out var bearer))
-                throw new ApplicationException();
+                return "";
             var username = GetUsername(bearer);
             return await Task.FromResult(username);
         }
 
-        private string GetUsername(StringValues bearer)
+        private static string GetUsername(StringValues bearer)
         {
             var s = bearer.ToString();
+            if (string.IsNullOrEmpty(s))
+            {
+                return "";
+            }
             var token = s.AsSpan().Slice("Bearer ".Length).ToString();
             var handler = new JwtSecurityTokenHandler();
             var jsonToken = handler.ReadToken(token);

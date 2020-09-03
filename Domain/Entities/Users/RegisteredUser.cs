@@ -9,12 +9,14 @@ namespace Misty.Domain.Entities.Users
             Email = email;
             IsBanned = false;
         }
+        
+        
 
         internal RegisteredUser()
         {
         }
 
-        public int Id { get; }
+        // public int Id { get; }
         public string Username { get; private set; }
         public string Password { get; private set; }
         public string Email { get; private set; }

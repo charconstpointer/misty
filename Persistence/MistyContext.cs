@@ -15,6 +15,7 @@ namespace Misty.Persistence
         public DbSet<Gallery> Galleries { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Ad> Ads { get; set; }
+        public DbSet<Visitor> Visitors { get; set; }
         public DbSet<RegisteredUser> Users { get; set; }
         public DbSet<Creator> Creators { get; set; }
         public DbSet<Moderator> Moderators { get; set; }

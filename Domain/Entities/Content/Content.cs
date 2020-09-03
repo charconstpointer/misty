@@ -67,7 +67,7 @@ namespace Misty.Domain.Entities.Content
                 return;
             }
             _contentVisitors.Add(contentVisitor);
-            contentVisitor.Visitor.AddVisitor(contentVisitor);
+            contentVisitor.Visitor.AddVisit(contentVisitor);
         }
 
         public Ad GetRandomAd()
