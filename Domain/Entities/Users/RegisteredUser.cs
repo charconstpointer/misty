@@ -1,10 +1,18 @@
 using System;
+using System.Collections.Generic;
+using Misty.Domain.Entities.Content;
 using Misty.Domain.Enums;
 
 namespace Misty.Domain.Entities.Users
 {
     public class RegisteredUser : Visitor
     {
+        private readonly ICollection<Comment> _comments = new List<Comment>();
+
+        internal RegisteredUser()
+        {
+        }
+
         protected RegisteredUser(string username, string password, string email, string ipAddress) : base(ipAddress)
         {
             Username = username;
@@ -13,10 +21,11 @@ namespace Misty.Domain.Entities.Users
             IsBanned = false;
         }
 
+        public string Username { get; }
+        public string Password { get; }
+        public string Email { get; }
+        public bool IsBanned { get; private set; }
 
-        internal RegisteredUser()
-        {
-        }
 
         public static RegisteredUser CreateAccount(string username, string password, string email, string ipAddress,
             UserType userType = UserType.Creator)
@@ -47,10 +56,5 @@ namespace Misty.Domain.Entities.Users
             if (moderator == null) throw new ArgumentNullException(nameof(moderator));
             IsBanned = true;
         }
-
-        public string Username { get; private set; }
-        public string Password { get; private set; }
-        public string Email { get; private set; }
-        public bool IsBanned { get; private set; }
     }
 }

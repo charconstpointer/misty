@@ -32,12 +32,9 @@ namespace Misty.Commands.Handlers
 
             var creator = await _context.Creators.SingleOrDefaultAsync(u => u.Username.ToLower() == username.ToLower(),
                 cancellationToken);
-            if (creator == null)
-            {
-                throw new ApplicationException("No such creator");
-            }
+            if (creator == null) throw new ApplicationException("No such creator");
 
-            var cats = await _context.Categories.ToListAsync(cancellationToken: cancellationToken);
+            var cats = await _context.Categories.ToListAsync(cancellationToken);
             var category = await _context.Categories.SingleOrDefaultAsync(c => c.Id == request.CategoryId,
                 cancellationToken);
             var article = new Article(request.Title, request.Description, request.Body, creator, category);

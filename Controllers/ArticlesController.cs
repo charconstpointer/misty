@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Misty.Commands.Articles;
 using Misty.Commands.Comments;
-using Misty.Queries;
 using Misty.Queries.Articles;
 
 namespace Misty.Controllers

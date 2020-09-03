@@ -5,7 +5,6 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Misty.Commands.Users;
 using Misty.Domain.Entities.Users;
-using Misty.Domain.Enums;
 using Misty.Persistence;
 
 namespace Misty.Commands.Handlers

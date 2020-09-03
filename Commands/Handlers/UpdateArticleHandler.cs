@@ -21,9 +21,9 @@ namespace Misty.Commands.Handlers
         public async Task<Unit> Handle(UpdateArticle request, CancellationToken cancellationToken)
         {
             var article = await _context.Articles.Include(a => a.Ads)
-                .SingleOrDefaultAsync(a => a.Id == request.ArticleId, cancellationToken: cancellationToken);
+                .SingleOrDefaultAsync(a => a.Id == request.ArticleId, cancellationToken);
             var ads = await _context.Ads.Where(a => request.AdIds.Contains(a.Id))
-                .ToListAsync(cancellationToken: cancellationToken);
+                .ToListAsync(cancellationToken);
             if (article == null)
             {
                 throw new ApplicationException($"Cannot find such article {request.ArticleId}");

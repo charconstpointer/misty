@@ -4,9 +4,6 @@ namespace Misty.Domain.ValueObjects
 {
     public class Tag
     {
-        public string Name { get; private set; }
-        public DateTime CreatedAt { get; private set; }
-
         private Tag()
         {
         }
@@ -15,6 +12,9 @@ namespace Misty.Domain.ValueObjects
         {
             Name = name;
         }
+
+        public string Name { get; }
+        public DateTime CreatedAt { get; private set; }
 
         public static Tag Create(string name)
         {

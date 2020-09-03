@@ -23,8 +23,8 @@ namespace Misty.Queries.Handlers
             var article = await _context.Articles
                 .Include(a => a.Comments)
                 .SingleOrDefaultAsync(
-                a => a.Id == request.ArticleId,
-                cancellationToken);
+                    a => a.Id == request.ArticleId,
+                    cancellationToken);
             var comments = article.Comments;
             return comments;
         }

@@ -8,7 +8,8 @@ namespace Misty.Extensions.Mappings
     public static class ArticleExtensions
     {
         public static ArticleDto AsDto(this Article article)
-            => new ArticleDto
+        {
+            return new ArticleDto
             {
                 Id = article.Id,
                 Title = article.Title,
@@ -16,14 +17,17 @@ namespace Misty.Extensions.Mappings
                 Body = article.Body,
                 Comments = article.Comments?.Select(c => c.Content),
                 Tags = Enumerable.Empty<string>(),
-                ViewCount = article.ContentVisitors.Select(cv=>cv.Visitor).Count(),
+                ViewCount = article.ContentVisitors.Select(cv => cv.Visitor).Count(),
                 Ads = article.Ads?.Select(a => a.Path),
                 Ad = article.GetRandomAd()?.Path,
                 Creator = article.Creator?.Username,
                 CreatedAt = article.CreatedAt
             };
+        }
 
         public static IEnumerable<ArticleDto> AsDto(this IEnumerable<Article> articles)
-            => articles.Select(AsDto);
+        {
+            return articles.Select(AsDto);
+        }
     }
 }

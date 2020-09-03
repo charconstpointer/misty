@@ -5,11 +5,6 @@ namespace Misty.Domain.Entities.Content.Gallery
 {
     public abstract class GalleryItem
     {
-        public int Id { get; }
-        public string Path { get; protected set; }
-        public Resolution Resolution { get; protected set; }
-        public Gallery Gallery { get; protected set; }
-
         protected GalleryItem()
         {
         }
@@ -19,6 +14,11 @@ namespace Misty.Domain.Entities.Content.Gallery
             if (string.IsNullOrEmpty(path)) throw new ArgumentException("Value cannot be null or empty.", nameof(path));
             Path = path;
         }
+
+        public int Id { get; }
+        public string Path { get; protected set; }
+        public Resolution Resolution { get; protected set; }
+        public Gallery Gallery { get; protected set; }
 
         public void AddGallery(Gallery gallery)
         {

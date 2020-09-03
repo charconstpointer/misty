@@ -20,9 +20,6 @@ namespace Misty.Domain.Entities.Content
             Title = title;
             Description = description;
             Category = category;
-            _comments = new List<Comment>();
-            _ads = new HashSet<Ad>();
-            _tags = new HashSet<Tag>();
             Creator = creator;
             State = ContentState.Created;
             CreatedAt = DateTime.UtcNow;
@@ -35,25 +32,53 @@ namespace Misty.Domain.Entities.Content
         public Category Category { get; protected set; }
         public string Title { get; protected set; }
         public string Description { get; protected set; }
-
-        public bool AdsEnabled { get; protected set; }
-
+        public bool AdsEnabled { get; protected set; } = true;
         private readonly ICollection<Ad> _ads = new HashSet<Ad>();
         private readonly ICollection<Comment> _comments = new List<Comment>();
-
-        private readonly ICollection<Tag> _tags = new HashSet<Tag>();
         private readonly ICollection<ContentVisitor> _contentVisitors = new List<ContentVisitor>();
+        private readonly ICollection<Tag> _tags = new HashSet<Tag>();
 
-        //TODO fix tags
-        public IEnumerable<Tag> Tags => Enumerable.Empty<Tag>();
+        public IEnumerable<Tag> Tags => _tags.ToList();
         public IEnumerable<Ad> Ads => _ads.ToList();
         public IEnumerable<Comment> Comments => _comments.ToList();
         public IEnumerable<ContentVisitor> ContentVisitors => _contentVisitors.ToList();
-        public Creator Creator { get; private set; }
+        public Creator Creator { get; protected set; }
         public ContentState State { get; protected set; }
-        public DateTime CreatedAt { get; private set; }
+        public DateTime CreatedAt { get; protected set; }
         public DateTime LastModifiedAt { get; private set; }
 
+        /// <summary>
+        /// Adds and ad to be displayed on an content
+        /// </summary>
+        /// <param name="ad"></param>
+        /// <exception cref="ArgumentNullException"></exception>
+        public void AddAd(Ad ad)
+        {
+            if (ad == null) throw new ArgumentNullException(nameof(ad));
+            _ads.Add(ad);
+            LastModifiedAt = DateTime.UtcNow;
+        }
+
+        /// <summary>
+        /// Calls AddAd in a loop, used to add multiple ads with a single method call
+        /// </summary>
+        /// <param name="ads"></param>
+        /// <exception cref="ArgumentException"></exception>
+        public void AddAds(IEnumerable<Ad> ads)
+        {
+            var adsList = ads.ToList();
+            if (adsList == null) throw new ArgumentException("Ads cannot be null");
+            if (!adsList.Any()) throw new ArgumentException("Ads cannot be empty");
+            foreach (var ad in adsList)
+            {
+                AddAd(ad);
+            }
+        }
+
+        /// <summary>
+        /// Adds tags which can be used to index current content
+        /// </summary>
+        /// <param name="tags"></param>
         public void AddTags(params string[] tags)
         {
             foreach (var tag in tags)
@@ -61,19 +86,40 @@ namespace Misty.Domain.Entities.Content
                 var t = Tag.Create(tag);
                 _tags.Add(t);
             }
+
+            LastModifiedAt = DateTime.UtcNow;
         }
 
+        /// <summary>
+        /// Registers a single visit on a content
+        /// </summary>
+        /// <param name="contentVisitor"></param>
         public void AddVisitor(ContentVisitor contentVisitor)
         {
-            if (_contentVisitors.Contains(contentVisitor))
-            {
-                return;
-            }
+            if (_contentVisitors.Contains(contentVisitor)) return;
 
             _contentVisitors.Add(contentVisitor);
             contentVisitor.Visitor.AddVisit(contentVisitor);
         }
 
+        /// <summary>
+        /// Adds comment to content
+        /// </summary>
+        /// <param name="comment"></param>
+        /// <exception cref="ArgumentNullException"></exception>
+        public void AddComment(Comment comment)
+        {
+            if (comment == null) throw new ArgumentNullException(nameof(comment));
+            if (_comments.Contains(comment)) return;
+
+            _comments.Add(comment);
+            comment.SetContent(this);
+        }
+
+        /// <summary>
+        /// Returns random ad associated with content
+        /// </summary>
+        /// <returns></returns>
         public Ad GetRandomAd()
         {
             if (!AdsEnabled) return null;
@@ -81,35 +127,6 @@ namespace Misty.Domain.Entities.Content
             var random = new Random();
             var ad = _ads?.ElementAtOrDefault(random.Next(_ads.Count));
             return ad;
-        }
-
-        public void AddAd(Ad ad)
-        {
-            _ads.Add(ad);
-        }
-
-        public void AddAds(IEnumerable<Ad> ads)
-        {
-            var adsList = ads.ToList();
-            if (adsList == null)
-            {
-                throw new ArgumentException("Ads cannot be null");
-            }
-
-            if (!adsList.Any())
-            {
-                throw new ArgumentException("Ads cannot be empty");
-            }
-
-            foreach (var ad in ads)
-            {
-                AddAd(ad);
-            }
-        }
-
-        public void AddComment(Comment comment)
-        {
-            _comments.Add(comment);
         }
     }
 }

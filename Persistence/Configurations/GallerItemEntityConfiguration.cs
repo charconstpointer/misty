@@ -9,7 +9,7 @@ namespace Misty.Persistence.Configurations
         public void Configure(EntityTypeBuilder<GalleryItem> builder)
         {
             builder.HasKey(g => g.Id);
-            builder.OwnsOne(g=>g.Resolution).WithOwner();
+            builder.OwnsOne(g => g.Resolution).WithOwner();
         }
     }
 }

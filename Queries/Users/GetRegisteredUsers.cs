@@ -6,6 +6,5 @@ namespace Misty.Queries.Users
 {
     public class GetRegisteredUsers : IRequest<IEnumerable<RegisteredUser>>
     {
-        
     }
 }

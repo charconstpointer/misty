@@ -31,6 +31,7 @@ namespace Misty.Commands
             {
                 return "";
             }
+
             var token = s.AsSpan().Slice("Bearer ".Length).ToString();
             var handler = new JwtSecurityTokenHandler();
             var jsonToken = handler.ReadToken(token);

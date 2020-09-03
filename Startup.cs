@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Misty.Extensions;
-using Misty.Middleware;
 using Misty.Persistence;
 
 namespace Misty

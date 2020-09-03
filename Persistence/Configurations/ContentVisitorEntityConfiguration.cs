@@ -12,7 +12,7 @@ namespace Misty.Persistence.Configurations
             builder.HasKey(cv => new {cv.ContentId, cv.VisitorId});
         }
     }
-    
+
     public class VisitorEntityConfiguration : IEntityTypeConfiguration<Visitor>
     {
         public void Configure(EntityTypeBuilder<Visitor> builder)

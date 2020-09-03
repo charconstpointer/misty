@@ -6,13 +6,6 @@ namespace Misty.Domain.Entities
 {
     public class ContentVisitor
     {
-        public Content.Content Content { get; private set; }
-        public Visitor Visitor { get; private set; }
-        public DateTime VisitedAd { get; private set; }
-        public Ad Ad { get; private set; }
-        public int VisitorId { get; private set; }
-        public int ContentId { get; private set; }
-
         private ContentVisitor()
         {
         }
@@ -24,5 +17,12 @@ namespace Misty.Domain.Entities
             VisitedAd = DateTime.UtcNow;
             Ad = ad;
         }
+
+        public Content.Content Content { get; }
+        public Visitor Visitor { get; }
+        public DateTime VisitedAd { get; }
+        public Ad Ad { get; }
+        public int VisitorId { get; private set; }
+        public int ContentId { get; private set; }
     }
 }
