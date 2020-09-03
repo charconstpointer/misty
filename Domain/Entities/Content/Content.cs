@@ -6,6 +6,7 @@ using Misty.Domain.Enums;
 
 namespace Misty.Domain.Entities.Content
 {
+    //TODO Content state SM
     //TODO impl missing functionality
     public abstract class Content
     {
