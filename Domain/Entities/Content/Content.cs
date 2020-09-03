@@ -9,10 +9,6 @@ namespace Misty.Domain.Entities.Content
     //TODO impl missing functionality
     public abstract class Content
     {
-        private readonly ICollection<Ad> _ads = new HashSet<Ad>();
-        private readonly ICollection<Comment> _comments = new List<Comment>();
-        private readonly ICollection<Tag> _tags = new HashSet<Tag>();
-
         protected Content()
         {
         }
@@ -39,10 +35,17 @@ namespace Misty.Domain.Entities.Content
 
         public bool AdsEnabled { get; protected set; }
 
+        private readonly ICollection<Ad> _ads = new HashSet<Ad>();
+        private readonly ICollection<Comment> _comments = new List<Comment>();
+
+        private readonly ICollection<Tag> _tags = new HashSet<Tag>();
+        private readonly ICollection<ContentVisitor> _contentVisitors = new List<ContentVisitor>();
+
         //TODO fix tags
         public IEnumerable<Tag> Tags => Enumerable.Empty<Tag>();
         public IEnumerable<Ad> Ads => _ads.ToList();
         public IEnumerable<Comment> Comments => _comments.ToList();
+        public IEnumerable<ContentVisitor> ContentVisitors => _contentVisitors.ToList();
         public Creator Creator { get; private set; }
         public ContentState State { get; protected set; }
         public DateTime CreatedAt { get; private set; }
@@ -55,6 +58,16 @@ namespace Misty.Domain.Entities.Content
                 var t = new Tag(tag);
                 _tags.Add(t);
             }
+        }
+
+        public void AddVisitor(ContentVisitor contentVisitor)
+        {
+            if (_contentVisitors.Contains(contentVisitor))
+            {
+                return;
+            }
+            _contentVisitors.Add(contentVisitor);
+            contentVisitor.Visitor.AddVisitor(contentVisitor);
         }
 
         public Ad GetRandomAd()
@@ -83,7 +96,7 @@ namespace Misty.Domain.Entities.Content
             {
                 throw new ArgumentException("Ads cannot be empty");
             }
-            
+
             foreach (var ad in ads)
             {
                 AddAd(ad);

@@ -18,7 +18,7 @@ namespace Misty.Commands.Handlers
 
         public async Task<Unit> Handle(CreateNewAd request, CancellationToken cancellationToken)
         {
-            var ad = new Ad(request.Path, request.Price, null);
+            var ad = Ad.Create(request.Path, request.Price, null);
             await _context.AddAsync(ad, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
             return Unit.Value;

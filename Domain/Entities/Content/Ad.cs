@@ -9,7 +9,7 @@ namespace Misty.Domain.Entities.Content
         {
         }
 
-        public Ad(string path, decimal price, Advertiser advertiser)
+        private Ad(string path, decimal price, Advertiser advertiser)
         {
             //TODO validate if valid url
             Path = path;
@@ -23,6 +23,15 @@ namespace Misty.Domain.Entities.Content
         public decimal PricePerView { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public Advertiser Advertiser { get; private set; }
+
+        public static Ad Create(string path, decimal price, Advertiser advertiser)
+        {
+            if (advertiser == null) throw new ArgumentNullException(nameof(advertiser));
+            if (string.IsNullOrEmpty(path)) throw new ArgumentNullException(nameof(path));
+            if (price < 0) throw new ArgumentNullException(nameof(price));
+            var ad = new Ad(path, price, advertiser);
+            return ad;
+        }
 
         public void Edit(Advertiser advertiser, string path = "", decimal price = -1)
         {

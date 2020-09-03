@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Misty.Domain.Entities.Users
 {
     public class Visitor
@@ -7,10 +9,22 @@ namespace Misty.Domain.Entities.Users
             IpAddress = ipAddress;
         }
 
-        public Visitor()
+        protected Visitor()
         {
         }
 
         public string IpAddress { get; private set; }
+        private readonly ICollection<ContentVisitor> _contentVisitors = new List<ContentVisitor>();
+
+        public void AddVisitor(ContentVisitor contentVisitor)
+        {
+            if (_contentVisitors.Contains(contentVisitor))
+            {
+                return;
+            }
+
+            _contentVisitors.Add(contentVisitor);
+            contentVisitor.Content.AddVisitor(contentVisitor);
+        }
     }
 }
