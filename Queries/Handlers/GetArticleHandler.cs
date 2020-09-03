@@ -50,10 +50,7 @@ namespace Misty.Queries.Handlers
             {
                 var user = await _context.Users.SingleOrDefaultAsync(u => u.Username.ToLower() == username,
                     cancellationToken);
-                if (user == null)
-                {
-                    throw new ApplicationException($"Could not find such user {username}");
-                }
+                if (user == null) throw new ApplicationException($"Could not find such user {username}");
 
                 var visit = new ContentVisitor(article, user);
                 user.AddVisit(visit);

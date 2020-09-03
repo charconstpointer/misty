@@ -25,10 +25,7 @@ namespace Misty.Commands.Handlers
             var username = await _userAccessor.GetUsername();
             var creator = await _context.Creators.SingleOrDefaultAsync(c => c.Username.ToLower() == username.ToLower(),
                 cancellationToken);
-            if (creator == null)
-            {
-                throw new ApplicationException($"Could not find requested creator {username}");
-            }
+            if (creator == null) throw new ApplicationException($"Could not find requested creator {username}");
 
             var article = await _context.Articles.SingleOrDefaultAsync(a => a.Id == request.ArticleId,
                 cancellationToken);

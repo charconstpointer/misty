@@ -4,7 +4,10 @@ namespace Misty.Domain.ValueObjects
 {
     public class Resolution
     {
-        private Resolution(){}
+        private Resolution()
+        {
+        }
+
         public Resolution(int height, int width)
         {
             ValidateParameters();

@@ -8,6 +8,9 @@ namespace Misty.Domain.Entities.Content.Gallery
 {
     public class Gallery : Content
     {
+        public static int MinimumItemCount = 5;
+        private readonly ICollection<GalleryItem> _galleryItems;
+
         private Gallery()
         {
         }
@@ -19,8 +22,6 @@ namespace Misty.Domain.Entities.Content.Gallery
             State = ContentState.Hidden;
         }
 
-        public static int MinimumItemCount = 5;
-        private readonly ICollection<GalleryItem> _galleryItems;
         public IEnumerable<GalleryItem> Items => _galleryItems.ToList();
 
         public void AddItem(GalleryItem item)
@@ -37,6 +38,5 @@ namespace Misty.Domain.Entities.Content.Gallery
             var isPresent = _galleryItems.Contains(item);
             if (isPresent) _galleryItems.Remove(item);
         }
-        
     }
 }

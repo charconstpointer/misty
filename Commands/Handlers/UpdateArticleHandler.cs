@@ -24,10 +24,7 @@ namespace Misty.Commands.Handlers
                 .SingleOrDefaultAsync(a => a.Id == request.ArticleId, cancellationToken);
             var ads = await _context.Ads.Where(a => request.AdIds.Contains(a.Id))
                 .ToListAsync(cancellationToken);
-            if (article == null)
-            {
-                throw new ApplicationException($"Cannot find such article {request.ArticleId}");
-            }
+            if (article == null) throw new ApplicationException($"Cannot find such article {request.ArticleId}");
 
             article.AddAds(ads);
             await _context.SaveChangesAsync(cancellationToken);

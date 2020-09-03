@@ -12,6 +12,11 @@ namespace Misty.Domain.Entities.Content
     //TODO delete, remove comments
     public abstract class Content
     {
+        private readonly ICollection<Ad> _ads = new HashSet<Ad>();
+        private readonly ICollection<Comment> _comments = new List<Comment>();
+        private readonly ICollection<ContentVisitor> _contentVisitors = new List<ContentVisitor>();
+        private readonly ICollection<Tag> _tags = new HashSet<Tag>();
+
         protected Content()
         {
         }
@@ -34,10 +39,6 @@ namespace Misty.Domain.Entities.Content
         public string Title { get; protected set; }
         public string Description { get; protected set; }
         public bool AdsEnabled { get; protected set; } = true;
-        private readonly ICollection<Ad> _ads = new HashSet<Ad>();
-        private readonly ICollection<Comment> _comments = new List<Comment>();
-        private readonly ICollection<ContentVisitor> _contentVisitors = new List<ContentVisitor>();
-        private readonly ICollection<Tag> _tags = new HashSet<Tag>();
 
         public IEnumerable<Tag> Tags => _tags.ToList();
         public IEnumerable<Ad> Ads => _ads.ToList();
@@ -49,7 +50,7 @@ namespace Misty.Domain.Entities.Content
         public DateTime LastModifiedAt { get; private set; }
 
         /// <summary>
-        /// Adds and ad to be displayed on an content
+        ///     Adds and ad to be displayed on an content
         /// </summary>
         /// <param name="ad"></param>
         /// <exception cref="ArgumentNullException"></exception>
@@ -61,7 +62,7 @@ namespace Misty.Domain.Entities.Content
         }
 
         /// <summary>
-        /// Calls AddAd in a loop, used to add multiple ads with a single method call
+        ///     Calls AddAd in a loop, used to add multiple ads with a single method call
         /// </summary>
         /// <param name="ads"></param>
         /// <exception cref="ArgumentException"></exception>
@@ -70,14 +71,11 @@ namespace Misty.Domain.Entities.Content
             var adsList = ads.ToList();
             if (adsList == null) throw new ArgumentException("Ads cannot be null");
             if (!adsList.Any()) throw new ArgumentException("Ads cannot be empty");
-            foreach (var ad in adsList)
-            {
-                AddAd(ad);
-            }
+            foreach (var ad in adsList) AddAd(ad);
         }
 
         /// <summary>
-        /// Adds tags which can be used to index current content
+        ///     Adds tags which can be used to index current content
         /// </summary>
         /// <param name="tags"></param>
         public void AddTags(params string[] tags)
@@ -92,7 +90,7 @@ namespace Misty.Domain.Entities.Content
         }
 
         /// <summary>
-        /// Registers a single visit on a content
+        ///     Registers a single visit on a content
         /// </summary>
         /// <param name="contentVisitor"></param>
         public void AddVisitor(ContentVisitor contentVisitor)
@@ -104,7 +102,7 @@ namespace Misty.Domain.Entities.Content
         }
 
         /// <summary>
-        /// Adds comment to content
+        ///     Adds comment to content
         /// </summary>
         /// <param name="comment"></param>
         /// <exception cref="ArgumentNullException"></exception>
@@ -118,7 +116,7 @@ namespace Misty.Domain.Entities.Content
         }
 
         /// <summary>
-        /// Returns random ad associated with content
+        ///     Returns random ad associated with content
         /// </summary>
         /// <returns></returns>
         public Ad GetRandomAd()
@@ -131,21 +129,15 @@ namespace Misty.Domain.Entities.Content
         }
 
         /// <summary>
-        /// This method allows you to change content state
-        /// Once the content is in deleted state you cannot revert it
+        ///     This method allows you to change content state
+        ///     Once the content is in deleted state you cannot revert it
         /// </summary>
         /// <param name="state"></param>
         public virtual void ChangeContentState(ContentState state)
         {
-            if (state == ContentState.Created)
-            {
-                return;
-            }
+            if (state == ContentState.Created) return;
 
-            if (State == ContentState.Deleted)
-            {
-                return;
-            }
+            if (State == ContentState.Deleted) return;
 
             State = state;
         }
