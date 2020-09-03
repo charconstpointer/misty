@@ -36,25 +36,25 @@ namespace Misty.Queries.Handlers
                 .SingleOrDefaultAsync(a => a.Id == request.ArticleId, cancellationToken);
             var username = await _userAccessor.GetUsername();
             var ipAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress;
-            Visitor visitor;
+            
             if (string.IsNullOrEmpty(username))
             {
-                visitor = new Visitor(ipAddress.ToString());
+                var visitor = new Visitor(ipAddress.ToString());
+                var visit = new ContentVisitor(article, visitor);
+                visitor.AddVisit(visit);
+                await _context.Visitors.AddAsync(visitor, cancellationToken);
             }
             else
             {
                 var user = await _context.Users.SingleOrDefaultAsync(u => u.Username.ToLower() == username,
                     cancellationToken: cancellationToken);
-                visitor = user;
                 if (user == null)
                 {
                     throw new ApplicationException($"Could not find such user {username}");
                 }
+                var visit = new ContentVisitor(article, user);
+                user.AddVisit(visit);
             }
-
-            var visit = new ContentVisitor(article, visitor);
-            visitor.AddVisit(visit);
-            await _context.Visitors.AddAsync(visitor, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
             return article.AsDto();
         }
