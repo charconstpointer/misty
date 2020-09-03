@@ -11,7 +11,6 @@ namespace Misty.Persistence.Configurations
             builder.HasKey(c => c.Id);
             builder.HasMany(c => c.Ads);
             builder.HasMany(c => c.Comments);
-            builder.HasMany(c => c.Tags);
             builder.HasOne(c => c.Creator).WithMany(cr => cr.Contents);
             builder.OwnsMany(c => c.Tags);
         }

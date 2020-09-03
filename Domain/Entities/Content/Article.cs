@@ -11,9 +11,8 @@ namespace Misty.Domain.Entities.Content
             Body = body;
         }
 
-        private Article(string body)
+        private Article()
         {
-            Body = body;
         }
 
         public string Body { get; }
