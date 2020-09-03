@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Misty.Domain.Entities.Content.Gallery;
-using Misty.Domain.ValueObjects;
 
 namespace Misty.Persistence.Configurations
 {

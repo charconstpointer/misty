@@ -3,6 +3,7 @@ using Misty.Domain.Entities.Users;
 
 namespace Misty.Domain.Entities.Content
 {
+    //TODO GetAllUserAds()
     public class Ad
     {
         private Ad()

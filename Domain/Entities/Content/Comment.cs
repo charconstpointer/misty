@@ -3,6 +3,8 @@ using Misty.Domain.Entities.Users;
 
 namespace Misty.Domain.Entities.Content
 {
+    //TODO Comment composition
+    //TODO Ad Association
     public class Comment
     {
         public Comment(string content, Creator author)

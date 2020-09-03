@@ -1,22 +1,46 @@
+using System;
+using Misty.Domain.Enums;
+
 namespace Misty.Domain.Entities.Users
 {
     public class RegisteredUser : Visitor
     {
-        public RegisteredUser(string username, string password, string email, string ipAddress) : base(ipAddress)
+        protected RegisteredUser(string username, string password, string email, string ipAddress) : base(ipAddress)
         {
             Username = username;
             Password = password;
             Email = email;
             IsBanned = false;
         }
-        
-        
+
 
         internal RegisteredUser()
         {
         }
 
-        // public int Id { get; }
+        public static RegisteredUser CreateAccount(string username, string password, string email, string ipAddress,
+            UserType userType = UserType.Creator)
+        {
+            ValidateParameters();
+
+            RegisteredUser user = userType switch
+            {
+                UserType.Moderator => new Moderator(username, password, email, ipAddress),
+                UserType.Creator => new Creator(username, password, email, ipAddress),
+                UserType.Advertiser => new Advertiser(username, password, email, ipAddress),
+                _ => throw new ArgumentOutOfRangeException(nameof(userType), userType, null)
+            };
+            return user;
+
+            void ValidateParameters()
+            {
+                if (username == null) throw new ArgumentNullException(nameof(username));
+                if (password == null) throw new ArgumentNullException(nameof(password));
+                if (email == null) throw new ArgumentNullException(nameof(email));
+                if (ipAddress == null) throw new ArgumentNullException(nameof(ipAddress));
+            }
+        }
+
         public string Username { get; private set; }
         public string Password { get; private set; }
         public string Email { get; private set; }
