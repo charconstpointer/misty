@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Misty.Domain.Entities.Users;
 using Misty.Domain.Enums;
+using Misty.Domain.ValueObjects;
 
 namespace Misty.Domain.Entities.Content
 {
@@ -57,7 +58,7 @@ namespace Misty.Domain.Entities.Content
         {
             foreach (var tag in tags)
             {
-                var t = new Tag(tag);
+                var t = Tag.Create(tag);
                 _tags.Add(t);
             }
         }
@@ -68,6 +69,7 @@ namespace Misty.Domain.Entities.Content
             {
                 return;
             }
+
             _contentVisitors.Add(contentVisitor);
             contentVisitor.Visitor.AddVisit(contentVisitor);
         }
