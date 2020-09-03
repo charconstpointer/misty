@@ -29,7 +29,7 @@ namespace Misty.Domain.Entities.Content.Gallery
             if (item == null) throw new ArgumentNullException(nameof(item));
             if (_galleryItems.Contains(item)) return;
             _galleryItems.Add(item);
-            item.AddGallery(this);
+            item.SetGallery(this);
         }
 
         public void RemoveItem(GalleryItem item)
