@@ -1,9 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Misty.Domain.Entities.Users;
 using Misty.Domain.Enums;
 
-namespace Misty.Domain.Entities.Content
+namespace Misty.Domain.Entities.Content.Gallery
 {
     public class Gallery : Content
     {
@@ -25,11 +26,15 @@ namespace Misty.Domain.Entities.Content
 
         public void AddItem(GalleryItem item)
         {
+            if (item == null) throw new ArgumentNullException(nameof(item));
+            if (_galleryItems.Contains(item)) return;
             _galleryItems.Add(item);
+            item.AddGallery(this);
         }
 
         public void RemoveItem(GalleryItem item)
         {
+            if (item == null) throw new ArgumentNullException(nameof(item));
             var isPresent = _galleryItems.Contains(item);
             if (isPresent) _galleryItems.Remove(item);
         }

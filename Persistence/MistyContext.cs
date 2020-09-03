@@ -1,6 +1,7 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Misty.Domain.Entities.Content;
+using Misty.Domain.Entities.Content.Gallery;
 using Misty.Domain.Entities.Users;
 
 namespace Misty.Persistence
@@ -15,6 +16,8 @@ namespace Misty.Persistence
         public DbSet<Gallery> Galleries { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Ad> Ads { get; set; }
+        public DbSet<Video> Videos { get; set; }
+        public DbSet<Image> Images { get; set; }
         public DbSet<Visitor> Visitors { get; set; }
         public DbSet<RegisteredUser> Users { get; set; }
         public DbSet<Creator> Creators { get; set; }
