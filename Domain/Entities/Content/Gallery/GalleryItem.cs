@@ -1,4 +1,5 @@
 using System;
+using Misty.Domain.ValueObjects;
 
 namespace Misty.Domain.Entities.Content.Gallery
 {
@@ -6,7 +7,8 @@ namespace Misty.Domain.Entities.Content.Gallery
     {
         public int Id { get; }
         public string Path { get; protected set; }
-        public Gallery Gallery { get; private set; }
+        public Resolution Resolution { get; protected set; }
+        public Gallery Gallery { get; protected set; }
 
         protected GalleryItem()
         {
@@ -21,7 +23,7 @@ namespace Misty.Domain.Entities.Content.Gallery
         public void AddGallery(Gallery gallery)
         {
             if (gallery == null) throw new ArgumentNullException(nameof(gallery));
-            if(Gallery != null) return;
+            if (Gallery != null) return;
             Gallery = gallery;
             gallery.AddItem(this);
         }
