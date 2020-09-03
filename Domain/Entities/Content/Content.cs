@@ -128,5 +128,25 @@ namespace Misty.Domain.Entities.Content
             var ad = _ads?.ElementAtOrDefault(random.Next(_ads.Count));
             return ad;
         }
+
+        /// <summary>
+        /// This method allows you to change content state
+        /// Once the content is in deleted state you cannot revert it
+        /// </summary>
+        /// <param name="state"></param>
+        public virtual void ChangeContentState(ContentState state)
+        {
+            if (state == ContentState.Created)
+            {
+                return;
+            }
+
+            if (State == ContentState.Deleted)
+            {
+                return;
+            }
+
+            State = state;
+        }
     }
 }

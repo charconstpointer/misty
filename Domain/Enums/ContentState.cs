@@ -5,6 +5,6 @@ namespace Misty.Domain.Enums
         Created,
         Visible,
         Hidden,
-        Delete
+        Deleted
     }
 }
