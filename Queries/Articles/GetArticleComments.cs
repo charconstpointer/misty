@@ -2,7 +2,7 @@
 using MediatR;
 using Misty.Domain.Entities.Content;
 
-namespace Misty.Queries
+namespace Misty.Queries.Articles
 {
     public class GetArticleComments : IRequest<IEnumerable<Comment>>
     {

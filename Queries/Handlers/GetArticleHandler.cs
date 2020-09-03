@@ -10,6 +10,7 @@ using Misty.Domain.Entities.Users;
 using Misty.Dto;
 using Misty.Extensions.Mappings;
 using Misty.Persistence;
+using Misty.Queries.Articles;
 
 namespace Misty.Queries.Handlers
 {

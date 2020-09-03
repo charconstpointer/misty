@@ -1,3 +1,4 @@
+using System;
 using Misty.Domain.Entities.Content;
 
 namespace Misty.Domain.Entities.Users
@@ -8,8 +9,19 @@ namespace Misty.Domain.Entities.Users
             email, ipAddress)
         {
         }
-        private Moderator(){}
+
+        private Moderator()
+        {
+        }
+
         public Category ModeratedCategory { get; private set; }
+
+        public void BanUser(RegisteredUser user)
+        {
+            if (user == null) throw new ArgumentNullException(nameof(user));
+            if (user.IsBanned) throw new ApplicationException("User is already banned");
+            user.Ban(this);
+        }
 
         public void Verify(Advertiser advertiser)
         {

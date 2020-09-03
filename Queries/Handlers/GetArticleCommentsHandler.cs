@@ -5,6 +5,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Misty.Domain.Entities.Content;
 using Misty.Persistence;
+using Misty.Queries.Articles;
 
 namespace Misty.Queries.Handlers
 {

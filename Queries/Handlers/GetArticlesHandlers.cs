@@ -8,6 +8,7 @@ using Misty.Domain.Entities.Content;
 using Misty.Dto;
 using Misty.Extensions.Mappings;
 using Misty.Persistence;
+using Misty.Queries.Articles;
 
 namespace Misty.Queries.Handlers
 {

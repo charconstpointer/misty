@@ -41,6 +41,13 @@ namespace Misty.Domain.Entities.Users
             }
         }
 
+        public void Ban(Moderator moderator)
+        {
+            if (IsBanned) throw new ApplicationException("User is already banned");
+            if (moderator == null) throw new ArgumentNullException(nameof(moderator));
+            IsBanned = true;
+        }
+
         public string Username { get; private set; }
         public string Password { get; private set; }
         public string Email { get; private set; }
