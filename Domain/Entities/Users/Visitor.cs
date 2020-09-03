@@ -16,7 +16,7 @@ namespace Misty.Domain.Entities.Users
         }
 
         public int Id { get; }
-        public string IpAddress { get; }
+        public string IpAddress { get; protected set; }
 
         public void AddVisit(ContentVisitor contentVisitor)
         {

@@ -12,6 +12,6 @@ namespace Misty.Domain.Entities.Content.Gallery
             Length = length;
         }
 
-        public int Length { get; }
+        public int Length { get; private set; }
     }
 }

@@ -23,10 +23,10 @@ namespace Misty.Domain.Entities.Content
 
         public int Id { get; }
         public string Content { get; private set; }
-        public DateTime CreatedAt { get; }
+        public DateTime CreatedAt { get; private set; }
         public DateTime LastChangedAt { get; private set; }
         public Creator Author { get; private set; }
-        public Content Article { get; set; }
+        public Content Article { get; private set; }
 
         public void SetAuthor(Creator author)
         {

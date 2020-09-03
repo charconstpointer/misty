@@ -21,9 +21,9 @@ namespace Misty.Domain.Entities.Users
             IsBanned = false;
         }
 
-        public string Username { get; }
-        public string Password { get; }
-        public string Email { get; }
+        public string Username { get; protected set; }
+        public string Password { get; protected set; }
+        public string Email { get; protected set; }
         public bool IsBanned { get; private set; }
 
 
