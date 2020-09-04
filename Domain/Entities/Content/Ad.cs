@@ -27,9 +27,10 @@ namespace Misty.Domain.Entities.Content
 
         public static Ad Create(string path, decimal price, Advertiser advertiser)
         {
-            // if (advertiser == null) throw new ArgumentNullException(nameof(advertiser));
+            if (advertiser == null) throw new ArgumentNullException(nameof(advertiser));
             ValidateAd(path, price);
             var ad = new Ad(path, price, advertiser);
+            advertiser.AddAd(ad);
             return ad;
         }
 

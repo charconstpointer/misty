@@ -24,6 +24,10 @@ namespace Misty.Domain.Entities.Users
         public void AddAd(Ad ad)
         {
             if (ad == null) throw new ArgumentNullException(nameof(ad));
+            if (_ads.Contains(ad))
+            {
+                return;
+            }
             _ads.Add(ad);
         }
 

@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Misty.Commands.Users;
+using Misty.Domain.ValueObjects;
 using Misty.Persistence;
 
 namespace Misty.Commands.Handlers
@@ -71,12 +72,6 @@ namespace Misty.Commands.Handlers
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var wt = tokenHandler.WriteToken(token);
             return wt;
-        }
-
-        public class Password
-        {
-            public string Hash { get; set; }
-            public string Salt { get; set; }
         }
     }
 }

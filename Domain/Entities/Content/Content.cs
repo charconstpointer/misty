@@ -153,9 +153,19 @@ namespace Misty.Domain.Entities.Content
             var toDelete = _comments.ToList();
             foreach (var comment in toDelete)
             {
-                _comments.Remove(comment);
-                comment.Delete();
+                RemoveComment(comment);
             }
+        }
+
+        public void RemoveComment(Comment comment)
+        {
+            if (!_comments.Contains(comment))
+            {
+                return;
+            }
+
+            _comments.Remove(comment);
+            comment.Delete();
         }
     }
 }

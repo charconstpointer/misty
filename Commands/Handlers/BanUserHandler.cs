@@ -24,6 +24,7 @@ namespace Misty.Commands.Handlers
             var moderator = await _context.Moderators.SingleAsync(m => m.Username == username, cancellationToken);
             var user = await _context.Users.SingleAsync(u => u.Username == request.Username, cancellationToken);
             moderator.BanUser(user);
+            await _context.SaveChangesAsync(cancellationToken);
             return Unit.Value;
         }
     }

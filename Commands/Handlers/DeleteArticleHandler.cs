@@ -24,6 +24,7 @@ namespace Misty.Commands.Handlers
             if (article == null) throw new ApplicationException("Article not found");
 
             _context.Articles.Remove(article);
+            article.Delete();
             await _context.SaveChangesAsync(cancellationToken);
             return Unit.Value;
         }

@@ -22,16 +22,20 @@ namespace Misty.Commands.Handlers
 
         public async Task<Unit> Handle(CreateNewUser request, CancellationToken cancellationToken)
         {
-            if (string.IsNullOrEmpty(request.Username)) throw new ApplicationException("Username cannot be null");
-            if (string.IsNullOrEmpty(request.Password)) throw new ApplicationException("Password cannot be null");
-            if (string.IsNullOrEmpty(request.Email)) throw new ApplicationException("Email cannot be null");
-
+            ValidateRequest();
             var ipAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
             var user = RegisteredUser.CreateAccount(request.Username, request.Password, request.Email, ipAddress,
                 request.UserType);
             await _context.Users.AddAsync(user, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
             return Unit.Value;
+
+            void ValidateRequest()
+            {
+                if (string.IsNullOrEmpty(request.Username)) throw new ApplicationException("Username cannot be null");
+                if (string.IsNullOrEmpty(request.Password)) throw new ApplicationException("Password cannot be null");
+                if (string.IsNullOrEmpty(request.Email)) throw new ApplicationException("Email cannot be null");
+            }
         }
     }
 }

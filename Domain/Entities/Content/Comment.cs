@@ -7,18 +7,20 @@ namespace Misty.Domain.Entities.Content
     //TODO Ad Association
     public class Comment
     {
+        private Comment()
+        {
+        }
+
         public Comment(string content, Creator author)
         {
-            //TODO validate content
+            if (content == null) throw new ArgumentNullException(nameof(content));
+            if (author == null) throw new ArgumentNullException(nameof(author));
             var snapshot = DateTime.UtcNow;
             Content = content;
             CreatedAt = snapshot;
             LastChangedAt = snapshot;
             Author = author;
-        }
-
-        private Comment()
-        {
+            author.AddComment(this);
         }
 
         public int Id { get; }
@@ -55,6 +57,12 @@ namespace Misty.Domain.Entities.Content
 
         public void Delete()
         {
+            if (Content == null)
+            {
+                return;
+            }
+
+            Article.RemoveComment(this);
             Article = null;
             Author = null;
         }
