@@ -4,12 +4,14 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Misty.Domain.Entities.Content;
+using Misty.Dto;
+using Misty.Extensions.Mappings;
 using Misty.Persistence;
 using Misty.Queries.Articles;
 
 namespace Misty.Queries.Handlers
 {
-    public class GetArticleCommentsHandler : IRequestHandler<GetArticleComments, IEnumerable<Comment>>
+    public class GetArticleCommentsHandler : IRequestHandler<GetArticleComments, IEnumerable<CommentDto>>
     {
         private readonly MistyContext _context;
 
@@ -18,7 +20,7 @@ namespace Misty.Queries.Handlers
             _context = context;
         }
 
-        public async Task<IEnumerable<Comment>> Handle(GetArticleComments request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<CommentDto>> Handle(GetArticleComments request, CancellationToken cancellationToken)
         {
             var article = await _context.Articles
                 .Include(a => a.Comments)
@@ -26,7 +28,7 @@ namespace Misty.Queries.Handlers
                     a => a.Id == request.ArticleId,
                     cancellationToken);
             var comments = article.Comments;
-            return comments;
+            return comments.AsDto();
         }
     }
 }
