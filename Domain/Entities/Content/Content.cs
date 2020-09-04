@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using Misty.Domain.Entities.Users;
 using Misty.Domain.Enums;
@@ -7,9 +8,6 @@ using Misty.Domain.ValueObjects;
 
 namespace Misty.Domain.Entities.Content
 {
-    //TODO Content state SM
-    //TODO impl missing functionality
-    //TODO delete, remove comments
     public abstract class Content
     {
         private readonly ICollection<Ad> _ads = new HashSet<Ad>();
@@ -68,6 +66,7 @@ namespace Misty.Domain.Entities.Content
         /// <exception cref="ArgumentException"></exception>
         public void AddAds(IEnumerable<Ad> ads)
         {
+            if (ads == null) throw new ArgumentNullException(nameof(ads));
             var adsList = ads.ToList();
             if (adsList == null) throw new ArgumentException("Ads cannot be null");
             if (!adsList.Any()) throw new ArgumentException("Ads cannot be empty");
@@ -80,6 +79,7 @@ namespace Misty.Domain.Entities.Content
         /// <param name="tags"></param>
         public void AddTags(params string[] tags)
         {
+            if (tags == null) throw new ArgumentNullException(nameof(tags));
             foreach (var tag in tags)
             {
                 var t = Tag.Create(tag);
@@ -95,6 +95,7 @@ namespace Misty.Domain.Entities.Content
         /// <param name="contentVisitor"></param>
         public void AddVisitor(ContentVisitor contentVisitor)
         {
+            if (contentVisitor == null) throw new ArgumentNullException(nameof(contentVisitor));
             if (_contentVisitors.Contains(contentVisitor)) return;
 
             _contentVisitors.Add(contentVisitor);
@@ -135,11 +136,26 @@ namespace Misty.Domain.Entities.Content
         /// <param name="state"></param>
         public virtual void ChangeContentState(ContentState state)
         {
+            if (!Enum.IsDefined(typeof(ContentState), state))
+                throw new InvalidEnumArgumentException(nameof(state), (int) state, typeof(ContentState));
             if (state == ContentState.Created) return;
 
             if (State == ContentState.Deleted) return;
 
             State = state;
+        }
+
+        /// <summary>
+        /// Performs clean up on deletion
+        /// </summary>
+        public void Delete()
+        {
+            var toDelete = _comments.ToList();
+            foreach (var comment in toDelete)
+            {
+                _comments.Remove(comment);
+                comment.Delete();
+            }
         }
     }
 }

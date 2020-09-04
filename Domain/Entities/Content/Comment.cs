@@ -52,5 +52,11 @@ namespace Misty.Domain.Entities.Content
             Article = content;
             content.AddComment(this);
         }
+
+        public void Delete()
+        {
+            Article = null;
+            Author = null;
+        }
     }
 }

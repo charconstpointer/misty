@@ -12,8 +12,8 @@ namespace Misty.Domain.Entities
 
         public ContentVisitor(Content.Content content, Visitor visitor, Ad ad = null)
         {
-            Content = content;
-            Visitor = visitor;
+            Content = content ?? throw new ArgumentNullException(nameof(content));
+            Visitor = visitor ?? throw new ArgumentNullException(nameof(visitor));
             VisitedAd = DateTime.UtcNow;
             Ad = ad;
         }
