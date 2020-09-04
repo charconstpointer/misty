@@ -7,8 +7,6 @@ namespace Misty.Domain.Entities.Users
 {
     public class RegisteredUser : Visitor
     {
-        private readonly ICollection<Comment> _comments = new List<Comment>();
-
         internal RegisteredUser()
         {
         }
@@ -25,7 +23,7 @@ namespace Misty.Domain.Entities.Users
         public string Password { get; protected set; }
         public string Email { get; protected set; }
         public bool IsBanned { get; private set; }
-
+        private readonly ICollection<Comment> _comments = new List<Comment>();
 
         public static RegisteredUser CreateAccount(string username, string password, string email, string ipAddress,
             UserType userType = UserType.Creator)
