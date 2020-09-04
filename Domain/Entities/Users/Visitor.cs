@@ -24,7 +24,6 @@ namespace Misty.Domain.Entities.Users
             if (_contentVisitors.Contains(contentVisitor)) return;
 
             _contentVisitors.Add(contentVisitor);
-            contentVisitor.Content.AddVisitor(contentVisitor);
         }
     }
 }

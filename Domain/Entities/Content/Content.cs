@@ -93,7 +93,7 @@ namespace Misty.Domain.Entities.Content
         ///     Registers a single visit on a content
         /// </summary>
         /// <param name="contentVisitor"></param>
-        public void AddVisitor(ContentVisitor contentVisitor)
+        public void AddVisit(ContentVisitor contentVisitor)
         {
             if (contentVisitor == null) throw new ArgumentNullException(nameof(contentVisitor));
             if (_contentVisitors.Contains(contentVisitor)) return;
