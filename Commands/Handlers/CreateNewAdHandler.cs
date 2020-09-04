@@ -23,7 +23,7 @@ namespace Misty.Commands.Handlers
         public async Task<Unit> Handle(CreateNewAd request, CancellationToken cancellationToken)
         {
             var username = await _userAccessor.GetUsername();
-            var advertiser = await _context.Advertisers.SingleAsync(a => a.Username.ToLower() == username.ToLower(),
+            var advertiser = await _context.Advertisers.SingleOrDefaultAsync(a => a.Username.ToLower() == username.ToLower(),
                 cancellationToken);
             var ad = Ad.Create(request.Path, request.Price, advertiser);
             await _context.AddAsync(ad, cancellationToken);
