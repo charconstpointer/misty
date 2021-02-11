@@ -17,6 +17,7 @@ namespace Misty.Extensions.Mappings
                 Body = article.Body,
                 Comments = article.Comments?.Select(c => c.Content),
                 Tags = Enumerable.Empty<string>(),
+                CategoryId = article.Category.Id,
                 ViewCount = article.ContentVisitors.Select(cv => cv.Visitor).Count(),
                 Ads = article.Ads?.Select(a => a.Path),
                 Ad = article.GetRandomAd()?.Path,

@@ -11,6 +11,7 @@ namespace Misty.Dto
         public string Body { get; set; }
         public string Creator { get; set; }
         public int ViewCount { get; set; }
+        public int CategoryId { get; set; }
         public IEnumerable<string> Tags { get; set; }
         public IEnumerable<string> Comments { get; set; }
         public IEnumerable<string> Ads { get; set; }
