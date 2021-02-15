@@ -23,22 +23,7 @@ namespace Misty.Queries.Handlers
 
         public async Task<IEnumerable<ArticleDto>> Handle(GetArticles request, CancellationToken cancellationToken)
         {
-            var filterByCategory = request.CategoryId > 0;
-            IEnumerable<Article> articles;
-            if (filterByCategory)
-            {
-                articles = await _context.Articles
-                    .Include(a => a.Ads)
-                    .Include(a => a.Comments)
-                    .Include(a => a.Category)
-                    .Include(a => a.Creator)
-                    .Include(a => a.ContentVisitors)
-                    .Where(a => a.Category.Id == request.CategoryId)
-                    .ToListAsync(cancellationToken);
-                return articles.AsDto();
-            }
-
-            articles = await _context.Articles
+            var articles = await _context.Articles
                 .Include(a => a.Ads)
                 .Include(a => a.Comments)
                 .Include(a => a.Category)

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
@@ -20,15 +21,17 @@ namespace Misty.Queries.Handlers
             _context = context;
         }
 
-        public async Task<IEnumerable<CommentDto>> Handle(GetArticleComments request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<CommentDto>> Handle(GetArticleComments request,
+            CancellationToken cancellationToken)
         {
-            var article = await _context.Articles
+            var articles = await _context.Articles
                 .Include(a => a.Comments)
-                .SingleOrDefaultAsync(
-                    a => a.Id == request.ArticleId,
-                    cancellationToken);
-            var comments = article.Comments;
-            return comments.AsDto();
+                .ThenInclude(c=>c.Author)
+                .Include(a => a.Creator)
+                .ToListAsync(cancellationToken: cancellationToken);
+
+            var article = articles.FirstOrDefault(a=>a.Id == request.ArticleId);
+            return article?.Comments.AsDto();
         }
     }
 }
