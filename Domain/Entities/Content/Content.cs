@@ -10,11 +10,6 @@ namespace Misty.Domain.Entities.Content
 {
     public abstract class Content
     {
-        private readonly ICollection<Ad> _ads = new HashSet<Ad>();
-        private readonly ICollection<Comment> _comments = new List<Comment>();
-        private readonly ICollection<ContentVisitor> _contentVisitors = new List<ContentVisitor>();
-        private readonly ICollection<Tag> _tags = new HashSet<Tag>();
-
         protected Content()
         {
         }
@@ -37,7 +32,10 @@ namespace Misty.Domain.Entities.Content
         public string Title { get; protected set; }
         public string Description { get; protected set; }
         public bool AdsEnabled { get; protected set; } = true;
-
+        private readonly ICollection<Ad> _ads = new HashSet<Ad>();
+        private readonly ICollection<Comment> _comments = new List<Comment>();
+        private readonly ICollection<ContentVisitor> _contentVisitors = new List<ContentVisitor>();
+        private readonly ICollection<Tag> _tags = new HashSet<Tag>();
         public IEnumerable<Tag> Tags => _tags.ToList();
         public IEnumerable<Ad> Ads => _ads.ToList();
         public IEnumerable<Comment> Comments => _comments.ToList();

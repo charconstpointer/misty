@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Text.Json.Serialization;
 
 namespace Misty.Domain.Entities.Content
 {
@@ -18,5 +21,8 @@ namespace Misty.Domain.Entities.Content
         public int Id { get; private set; }
         public string Name { get; private set; }
         public string Description { get; private set; }
+        private readonly ICollection<Content> _contents;
+        [JsonIgnore]
+        public ICollection<Content> Contents => _contents.ToImmutableList();
     }
 }

@@ -9,6 +9,7 @@ namespace Misty.Persistence.Configurations
         public void Configure(EntityTypeBuilder<Category> builder)
         {
             builder.HasKey(c => c.Id);
+            builder.HasMany(c => c.Contents);
         }
     }
 }

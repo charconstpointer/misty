@@ -20,7 +20,8 @@ namespace Misty.Queries.Handlers
 
         public async Task<IEnumerable<Category>> Handle(GetCategories request, CancellationToken cancellationToken)
         {
-            var categories = await _context.Categories.ToListAsync(cancellationToken);
+            var categories = await _context.Categories
+                .ToListAsync(cancellationToken);
             return categories;
         }
     }
