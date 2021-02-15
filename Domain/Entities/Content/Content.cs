@@ -23,7 +23,6 @@ namespace Misty.Domain.Entities.Content
             State = ContentState.Created;
             CreatedAt = DateTime.UtcNow;
             AdsEnabled = true;
-
             creator.AddContent(this);
         }
 

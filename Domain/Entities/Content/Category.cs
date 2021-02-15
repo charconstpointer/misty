@@ -17,12 +17,21 @@ namespace Misty.Domain.Entities.Content
             Description = description ?? throw new ArgumentNullException(nameof(description));
         }
 
-
         public int Id { get; private set; }
         public string Name { get; private set; }
         public string Description { get; private set; }
-        private readonly ICollection<Content> _contents;
-        [JsonIgnore]
-        public ICollection<Content> Contents => _contents.ToImmutableList();
+        private readonly ICollection<Content> _contents = new List<Content>();
+        [JsonIgnore] public ICollection<Content> Contents => _contents.ToImmutableList();
+
+        public void AddContent(Content content)
+        {
+            if (content == null) throw new ArgumentNullException(nameof(content));
+            if (_contents.Contains(content))
+            {
+                return;
+            }
+
+            _contents.Add(content);
+        }
     }
 }

@@ -43,5 +43,14 @@ namespace Misty.Domain.Entities.Content.Gallery
 
             return item;
         }
+
+        public void Delete()
+        {
+            if (Gallery is null)
+            {
+                return;
+            }
+            Gallery = null;
+        }
     }
 }

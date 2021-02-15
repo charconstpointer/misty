@@ -37,6 +37,7 @@ namespace Misty.Domain.Entities.Content.Gallery
             if (item == null) throw new ArgumentNullException(nameof(item));
             var isPresent = _galleryItems.Contains(item);
             if (isPresent) _galleryItems.Remove(item);
+            item.Delete();
         }
     }
 }

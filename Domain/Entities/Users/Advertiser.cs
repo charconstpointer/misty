@@ -7,8 +7,6 @@ namespace Misty.Domain.Entities.Users
 {
     public class Advertiser : RegisteredUser
     {
-        private readonly ICollection<Ad> _ads = new HashSet<Ad>();
-
         public Advertiser(string username, string password, string email, string ipAddress) : base(username, password,
             email, ipAddress)
         {
@@ -19,6 +17,7 @@ namespace Misty.Domain.Entities.Users
         }
 
         public bool IsVerified { get; private set; }
+        private readonly ICollection<Ad> _ads = new HashSet<Ad>();
         public IEnumerable<Ad> Ads => _ads.ToList();
 
         public void AddAd(Ad ad)
@@ -28,6 +27,7 @@ namespace Misty.Domain.Entities.Users
             {
                 return;
             }
+
             _ads.Add(ad);
         }
 

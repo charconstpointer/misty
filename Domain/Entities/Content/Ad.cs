@@ -22,8 +22,8 @@ namespace Misty.Domain.Entities.Content
         public int Id { get; }
         public string Path { get; private set; }
         public decimal PricePerView { get; private set; }
-        public DateTime CreatedAt { get; private set;}
-        public Advertiser Advertiser { get; private set;}
+        public DateTime CreatedAt { get; private set; }
+        public Advertiser Advertiser { get; private set; }
 
         public static Ad Create(string path, decimal price, Advertiser advertiser)
         {
