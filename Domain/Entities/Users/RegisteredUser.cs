@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using Misty.Domain.Entities.Content;
 using Misty.Domain.Enums;
 
@@ -24,6 +25,7 @@ namespace Misty.Domain.Entities.Users
         public string Email { get; protected set; }
         public bool IsBanned { get; private set; }
         private readonly ICollection<Comment> _comments = new List<Comment>();
+        public ICollection<Comment> Comments => _comments.ToImmutableList();
 
         public static RegisteredUser CreateAccount(string username, string password, string email, string ipAddress,
             UserType userType = UserType.Creator)
@@ -46,6 +48,15 @@ namespace Misty.Domain.Entities.Users
                 if (email == null) throw new ArgumentNullException(nameof(email));
                 if (ipAddress == null) throw new ArgumentNullException(nameof(ipAddress));
             }
+        }
+
+        public void AddComment(Comment comment)
+        {
+            if (comment == null) throw new ArgumentNullException(nameof(comment));
+            if (_comments.Contains(comment)) return;
+
+            _comments.Add(comment);
+            comment.SetAuthor(this);
         }
 
         public void Ban(Moderator moderator)

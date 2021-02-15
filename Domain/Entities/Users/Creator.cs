@@ -22,14 +22,7 @@ namespace Misty.Domain.Entities.Users
         public decimal Balance { get; private set; }
         public IEnumerable<Content.Content> Contents => _contents.ToList();
 
-        public void AddComment(Comment comment)
-        {
-            if (comment == null) throw new ArgumentNullException(nameof(comment));
-            if (_comments.Contains(comment)) return;
-
-            _comments.Add(comment);
-            comment.SetAuthor(this);
-        }
+        
 
         public void AddContent(Content.Content content)
         {

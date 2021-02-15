@@ -11,7 +11,7 @@ namespace Misty.Domain.Entities.Content
         {
         }
 
-        public Comment(string content, Creator author)
+        public Comment(string content, RegisteredUser author)
         {
             if (content == null) throw new ArgumentNullException(nameof(content));
             if (author == null) throw new ArgumentNullException(nameof(author));
@@ -27,10 +27,10 @@ namespace Misty.Domain.Entities.Content
         public string Content { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public DateTime LastChangedAt { get; private set; }
-        public Creator Author { get; private set; }
+        public RegisteredUser Author { get; private set; }
         public Content Article { get; private set; }
 
-        public void SetAuthor(Creator author)
+        public void SetAuthor(RegisteredUser author)
         {
             if (Author != null) return;
             Author = author;

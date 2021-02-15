@@ -132,7 +132,7 @@ namespace Misty.Domain.Entities.Content
         ///     Once the content is in deleted state you cannot revert it
         /// </summary>
         /// <param name="state"></param>
-        public virtual void ChangeContentState(ContentState state)
+        public void ChangeContentState(ContentState state)
         {
             if (!Enum.IsDefined(typeof(ContentState), state))
                 throw new InvalidEnumArgumentException(nameof(state), (int) state, typeof(ContentState));
